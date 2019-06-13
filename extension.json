@@ -1,0 +1,21 @@
+{
+    "name": "SemanticActions",
+	"version": "0.1.0",
+	"author": [
+		"Daren Welsh"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:SemanticActions",
+	"descriptionmsg": "srf-desc",
+	"namemsg": "srf-name",
+	"license-name": "MIT",
+	"type": "semantic",
+	"requires": {
+		"MediaWiki": ">= 1.27"
+	},
+	"MessagesDirs": {
+		"SemanticActions": [
+			"i18n"
+		]
+	},
+	"manifest_version": 1
+}
