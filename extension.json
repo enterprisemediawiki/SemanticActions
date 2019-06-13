@@ -50,5 +50,12 @@
 			"constant": "NS_LABEL_TALK",
 			"name": "Label_Talk"
 		}
-	]
+	],
+	"config": {
+		"_prefix": "",
+		"smwgNamespacesWithSemanticLinks[NS_ACTION]": true,
+		"smwgNamespacesWithSemanticLinks[NS_LABEL]": true,
+		"wgVisualEditorAvailableNamespaces[NS_ACTION]": true,
+		"wgVisualEditorAvailableNamespaces[NS_LABEL]": true
+	}
 }
