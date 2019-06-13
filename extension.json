@@ -2,7 +2,7 @@
     "name": "SemanticActions",
 	"version": "0.1.0",
 	"author": [
-		"Daren Welsh"
+		"[https://www.mediawiki.org/wiki/User:Darenwelsh Daren Welsh]"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:SemanticActions",
 	"descriptionmsg": "srf-desc",
@@ -17,5 +17,38 @@
 			"i18n"
 		]
 	},
-	"manifest_version": 1
+	"manifest_version": 1,
+	"ResourceModules": {
+		"ext.SemanticActions": {
+			"styles": [
+				"SemanticActions.css"
+			]
+		},
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "SemanticActions/resources"
+	},
+	"namespaces": [
+		{
+			"id": 690,
+			"constant": "NS_ACTION",
+			"name": "Action"
+		},
+		{
+			"id": 691,
+			"constant": "NS_ACTION_TALK",
+			"name": "Action_Talk"
+		},
+		{
+			"id": 692,
+			"constant": "NS_LABEL",
+			"name": "Label"
+		},
+		{
+			"id": 693,
+			"constant": "NS_LABEL_TALK",
+			"name": "Label_Talk"
+		}
+	]
 }
