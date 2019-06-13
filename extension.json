@@ -5,8 +5,8 @@
 		"[https://www.mediawiki.org/wiki/User:Darenwelsh Daren Welsh]"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:SemanticActions",
-	"descriptionmsg": "srf-desc",
-	"namemsg": "srf-name",
+	"descriptionmsg": "sa-desc",
+	"namemsg": "sa-name",
 	"license-name": "MIT",
 	"type": "semantic",
 	"requires": {
