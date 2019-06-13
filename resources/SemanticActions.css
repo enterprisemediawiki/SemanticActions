@@ -1,0 +1,351 @@
+table.actionable {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-top: 3px;
+}
+.actionable td:nth-child(1) {
+	padding: 0 5px;
+	white-space:nowrap;
+	background:#535252;
+	color:white;
+	text-align:right;
+	vertical-align:top;
+}
+.actionable td:nth-child(2) {
+	padding: 0 5px;
+	min-width:115px;
+	border: 1px solid black;
+}
+table.actionable_board {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-top: 10px;
+	width: 320px;
+}
+.actionable_board th {
+	background-color: #d5d5d5;
+	border: 1px solid black;
+	padding: 5px;
+}
+.actionable_board td {
+	padding: 0 5px 5px;
+	background:#ffffff;
+	vertical-align:top;
+}
+table.actionable_board_action td {
+	border: 1px solid black;
+}
+.actionable_board p {
+	margin: 1px 0;
+}
+.actionable_button {
+	background-color: #666666; /* Gray*/
+	border: 2px solid #666666; /* Gray*/
+	color: white;
+	padding: 0px 8px;
+	margin-top: 1px;
+	margin-right: 4px;
+	margin-bottom: 1px;
+	margin-left: 0px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	border-radius: 12px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+}
+span.actionable_button.add_action a {
+	padding: 0px 20px;
+	font-size: 16px;
+}
+span.actionable_button.search_action a {
+	padding: 0px 20px;
+	font-size: 16px;
+	background: none !important;
+}
+.actionable_button.add_action {
+	background-color: #1a7d30; /* Green */
+	border: 2px solid #ffffff; /* White*/
+	margin: -1px;
+	padding: 0px;
+}
+.actionable_button.search_action {
+	background-color: #0000ff; /* Blue*/
+	border: 2px solid #ffffff; /* White*/
+	margin: -1px;
+	padding: 0px;
+}
+.actionable_button.add_action:hover {
+	border: 2px solid #666666; /* Gray*/
+}
+.actionable_button.search_action:hover {
+	border: 2px solid #666666; /* Gray*/
+}
+.actionable_button.related_article {
+	border-radius: 4px;
+}
+.actionable_button a {
+	font-size: 10px;
+	color: white;
+}
+.actionable_button, .search_action, .add_action a:visited {
+	color: white;
+}
+.actionable_button, .search_action a.external, .search_action a.external:visited {
+	color: white;
+}
+.actionable_button .new a:link {
+	color: #e60000; /* bright red */
+}
+.actionable_button .new a:visited {
+	color: #e60000; /* bright red */
+}
+.actionable_button:hover {
+	border: 2px solid #ffffff; /* White*/
+}
+.actionable_button .new a:hover {
+	color: #e60000; /* bright red */
+}
+
+.label_colorpicker option[value="IndianRed"], .label_button_IndianRed, .label_button_IndianRed a {
+	background-color:#CD5C5C;
+	border-color:#CD5C5C;
+	color:#ffffff;
+}.label_colorpicker option[value="LightCoral"], .label_button_LightCoral, .label_button_LightCoral a {
+	background-color:#F08080;
+	border-color:#F08080;
+	color:#000000;
+}.label_colorpicker option[value="DarkSalmon"], .label_button_DarkSalmon, .label_button_DarkSalmon a {
+	background-color:#E9967A;
+	border-color:#E9967A;
+	color:#000000;
+}.label_colorpicker option[value="LightSalmon"], .label_button_LightSalmon, .label_button_LightSalmon a {
+	background-color:#FFA07A;
+	border-color:#FFA07A;
+	color:#000000;
+}.label_colorpicker option[value="Crimson"], .label_button_Crimson, .label_button_Crimson a {
+	background-color:#DC143C;
+	border-color:#DC143C;
+	color:#ffffff;
+}.label_colorpicker option[value="Red"], .label_button_Red, .label_button_Red a {
+	background-color:#FF0000;
+	border-color:#FF0000;
+	color:#ffffff;
+}.label_colorpicker option[value="Sienna"], .label_button_Sienna, .label_button_Sienna a {
+	background-color:#A0522D;
+	border-color:#A0522D;
+	color:#ffffff;
+}.label_colorpicker option[value="SaddleBrown"], .label_button_SaddleBrown, .label_button_SaddleBrown a {
+	background-color:#8B4513;
+	border-color:#8B4513;
+	color:#ffffff;
+}.label_colorpicker option[value="DarkRed"], .label_button_DarkRed, .label_button_DarkRed a {
+	background-color:#8B0000;
+	border-color:#8B0000;
+	color:#ffffff;
+}.label_colorpicker option[value="Pink"], .label_button_Pink, .label_button_Pink a {
+	background-color:#FFC0CB;
+	border-color:#FFC0CB;
+	color:#000000;
+}.label_colorpicker option[value="HotPink"], .label_button_HotPink, .label_button_HotPink a {
+	background-color:#FF69B4;
+	border-color:#FF69B4;
+	color:#ffffff;
+}.label_colorpicker option[value="DeepPink"], .label_button_DeepPink, .label_button_DeepPink a {
+	background-color:#FF1493;
+	border-color:#FF1493;
+	color:#ffffff;
+}.label_colorpicker option[value="MediumVioletRed"], .label_button_MediumVioletRed, .label_button_MediumVioletRed a {
+	background-color:#C71585;
+	border-color:#C71585;
+	color:#ffffff;
+}.label_colorpicker option[value="PaleVioletRed"], .label_button_PaleVioletRed, .label_button_PaleVioletRed a {
+	background-color:#DB7093;
+	border-color:#DB7093;
+	color:#ffffff;
+}.label_colorpicker option[value="Tomato"], .label_button_Tomato, .label_button_Tomato a {
+	background-color:#FF6347;
+	border-color:#FF6347;
+	color:#ffffff;
+}.label_colorpicker option[value="OrangeRed"], .label_button_OrangeRed, .label_button_OrangeRed a {
+	background-color:#FF4500;
+	border-color:#FF4500;
+	color:#ffffff;
+}.label_colorpicker option[value="DarkOrange"], .label_button_DarkOrange, .label_button_DarkOrange a {
+	background-color:#FF8C00;
+	border-color:#FF8C00;
+	color:#ffffff;
+}.label_colorpicker option[value="Chocolate"], .label_button_Chocolate, .label_button_Chocolate a {
+	background-color:#D2691E;
+	border-color:#D2691E;
+	color:#ffffff;
+}.label_colorpicker option[value="Gold"], .label_button_Gold, .label_button_Gold a {
+	background-color:#FFD700;
+	border-color:#FFD700;
+	color:#000000;
+}.label_colorpicker option[value="Goldenrod"], .label_button_Goldenrod, .label_button_Goldenrod a {
+	background-color:#DAA520;
+	border-color:#DAA520;
+	color:#ffffff;
+}.label_colorpicker option[value="Yellow"], .label_button_Yellow, .label_button_Yellow a {
+	background-color:#FFFF00;
+	border-color:#FFFF00;
+	color:#000000;
+}.label_colorpicker option[value="LemonChiffon"], .label_button_LemonChiffon, .label_button_LemonChiffon a {
+	background-color:#FFFACD;
+	border-color:#FFFACD;
+	color:#000000;
+}.label_colorpicker option[value="Moccasin"], .label_button_Moccasin, .label_button_Moccasin a {
+	background-color:#FFE4B5;
+	border-color:#FFE4B5;
+	color:#000000;
+}.label_colorpicker option[value="PeachPuff"], .label_button_PeachPuff, .label_button_PeachPuff a {
+	background-color:#FFDAB9;
+	border-color:#FFDAB9;
+	color:#000000;
+}.label_colorpicker option[value="Khaki"], .label_button_Khaki, .label_button_Khaki a {
+	background-color:#F0E68C;
+	border-color:#F0E68C;
+	color:#000000;
+}.label_colorpicker option[value="DarkKhaki"], .label_button_DarkKhaki, .label_button_DarkKhaki a {
+	background-color:#BDB76B;
+	border-color:#BDB76B;
+	color:#ffffff;
+}.label_colorpicker option[value="BurlyWood"], .label_button_BurlyWood, .label_button_BurlyWood a {
+	background-color:#DEB887;
+	border-color:#DEB887;
+	color:#ffffff;
+}.label_colorpicker option[value="Lavender"], .label_button_Lavender, .label_button_Lavender a {
+	background-color:#E6E6FA;
+	border-color:#E6E6FA;
+	color:#000000;
+}.label_colorpicker option[value="Thistle"], .label_button_Thistle, .label_button_Thistle a {
+	background-color:#D8BFD8;
+	border-color:#D8BFD8;
+	color:#ffffff;
+}.label_colorpicker option[value="Violet"], .label_button_Violet, .label_button_Violet a {
+	background-color:#EE82EE;
+	border-color:#EE82EE;
+	color:#ffffff;
+}.label_colorpicker option[value="Orchid"], .label_button_Orchid, .label_button_Orchid a {
+	background-color:#DA70D6;
+	border-color:#DA70D6;
+	color:#ffffff;
+}.label_colorpicker option[value="Fuchsia"], .label_button_Fuchsia, .label_button_Fuchsia a {
+	background-color:#FF00FF;
+	border-color:#FF00FF;
+	color:#ffffff;
+}.label_colorpicker option[value="MediumOrchid"], .label_button_MediumOrchid, .label_button_MediumOrchid a {
+	background-color:#BA55D3;
+	border-color:#BA55D3;
+	color:#ffffff;
+}.label_colorpicker option[value="MediumPurple"], .label_button_MediumPurple, .label_button_MediumPurple a {
+	background-color:#9370DB;
+	border-color:#9370DB;
+	color:#ffffff;
+}.label_colorpicker option[value="BlueViolet"], .label_button_BlueViolet, .label_button_BlueViolet a {
+	background-color:#8A2BE2;
+	border-color:#8A2BE2;
+	color:#ffffff;
+}.label_colorpicker option[value="DarkViolet"], .label_button_DarkViolet, .label_button_DarkViolet a {
+	background-color:#9400D3;
+	border-color:#9400D3;
+	color:#ffffff;
+}.label_colorpicker option[value="Purple"], .label_button_Purple, .label_button_Purple a {
+	background-color:#800080;
+	border-color:#800080;
+	color:#ffffff;
+}.label_colorpicker option[value="Indigo"], .label_button_Indigo, .label_button_Indigo a {
+	background-color:#4B0082;
+	border-color:#4B0082;
+	color:#ffffff;
+}.label_colorpicker option[value="GreenYellow"], .label_button_GreenYellow, .label_button_GreenYellow a {
+	background-color:#ADFF2F;
+	border-color:#ADFF2F;
+	color:#000000;
+}.label_colorpicker option[value="Lime"], .label_button_Lime, .label_button_Lime a {
+	background-color:#00FF00;
+	border-color:#00FF00;
+	color:#000000;
+}.label_colorpicker option[value="LimeGreen"], .label_button_LimeGreen, .label_button_LimeGreen a {
+	background-color:#90EE90;
+	border-color:#90EE90;
+	color:#000000;
+}.label_colorpicker option[value="SpringGreen"], .label_button_SpringGreen, .label_button_SpringGreen a {
+	background-color:#00FF7F;
+	border-color:#00FF7F;
+	color:#000000;
+}.label_colorpicker option[value="SeaGreen"], .label_button_SeaGreen, .label_button_SeaGreen a {
+	background-color:#2E8B57;
+	border-color:#2E8B57;
+	color:#ffffff;
+}.label_colorpicker option[value="Green"], .label_button_Green, .label_button_Green a {
+	background-color:#008000;
+	border-color:#008000;
+	color:#ffffff;
+}.label_colorpicker option[value="DarkGreen"], .label_button_DarkGreen, .label_button_DarkGreen a {
+	background-color:#006400;
+	border-color:#006400;
+	color:#ffffff;
+}.label_colorpicker option[value="Teal"], .label_button_Teal, .label_button_Teal a {
+	background-color:#008080;
+	border-color:#008080;
+	color:#ffffff;
+}.label_colorpicker option[value="Aqua"], .label_button_Aqua, .label_button_Aqua a {
+	background-color:#00FFFF;
+	border-color:#00FFFF;
+	color:#000000;
+}.label_colorpicker option[value="LightCyan"], .label_button_LightCyan, .label_button_LightCyan a {
+	background-color:#E0FFFF;
+	border-color:#E0FFFF;
+	color:#000000;
+}.label_colorpicker option[value="Aquamarine"], .label_button_Aquamarine, .label_button_Aquamarine a {
+	background-color:#7FFFD4;
+	border-color:#7FFFD4;
+	color:#000000;
+}.label_colorpicker option[value="DarkTurquoise"], .label_button_DarkTurquoise, .label_button_DarkTurquoise a {
+	background-color:#00CED1;
+	border-color:#00CED1;
+	color:#ffffff;
+}.label_colorpicker option[value="SteelBlue"], .label_button_SteelBlue, .label_button_SteelBlue a {
+	background-color:#4682B4;
+	border-color:#4682B4;
+	color:#ffffff;
+}.label_colorpicker option[value="SkyBlue"], .label_button_SkyBlue, .label_button_SkyBlue a {
+	background-color:#87CEEB;
+	border-color:#87CEEB;
+	color:#000000;
+}.label_colorpicker option[value="DeepSkyBlue"], .label_button_DeepSkyBlue, .label_button_DeepSkyBlue a {
+	background-color:#00BFFF;
+	border-color:#00BFFF;
+	color:#ffffff;
+}.label_colorpicker option[value="Blue"], .label_button_Blue, .label_button_Blue a {
+	background-color:#0000FF;
+	border-color:#0000FF;
+	color:#ffffff;
+}.label_colorpicker option[value="DarkBlue"], .label_button_DarkBlue, .label_button_DarkBlue a {
+	background-color:#00008B;
+	border-color:#00008B;
+	color:#ffffff;
+}.label_colorpicker option[value="LightGrey"], .label_button_LightGrey, .label_button_LightGrey a {
+	background-color:#D3D3D3;
+	border-color:#D3D3D3;
+	color:#000000;
+}.label_colorpicker option[value="DarkGray"], .label_button_DarkGray, .label_button_DarkGray a {
+	background-color:#A9A9A9;
+	border-color:#A9A9A9;
+	color:#000000;
+}.label_colorpicker option[value="Gray"], .label_button_Gray, .label_button_Gray a {
+	background-color:#808080;
+	border-color:#808080;
+	color:#ffffff;
+}.label_colorpicker option[value="SlateGray"], .label_button_SlateGray, .label_button_SlateGray a {
+	background-color:#708090;
+	border-color:#708090;
+	color:#ffffff;
+}.label_colorpicker option[value="Black"], .label_button_Black, .label_button_Black a {
+	background-color:#000000;
+	border-color:#000000;
+	color:#ffffff;
+}
