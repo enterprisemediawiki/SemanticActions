@@ -1,0 +1,11 @@
+<includeonly><span class="actionable_button search_action">[{{fullurl:search|search=&title=Special%3ASearch&profile=advanced&fulltext=1&ns4212=1}} Search actions]</span></includeonly><noinclude><!--
+
+-->This template adds a button with a link to search actions.
+
+== Example ==
+<pre>{{Search actions button}}</pre>
+
+{{Search actions button}}
+
+[[Category:Page required for Actionable Extension]]
+</noinclude>

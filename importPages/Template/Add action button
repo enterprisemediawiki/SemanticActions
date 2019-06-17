@@ -1,0 +1,15 @@
+<includeonly><span class="actionable_button add_action">{{#formlink:form=Actionable|link text=Add an action|link type=text|query string=Actionable[RELATED_ARTICLE]={{urlencode:{{{1|}}}}}|new window}}</span></includeonly><noinclude><!--
+
+-->This template adds a button with a link to add an action. You can optionally include a parameter to define the Related article(s) pre-populated in the action form.
+
+<nowiki>{{{1|}}}</nowiki> = Related article(s) (comma-separated list)
+
+== Example ==
+Please don't actually add actions using this link, but notice how it links you to a form to create an action with "JSC" as a related article.
+
+<pre>{{Add action button|JSC}}</pre>
+
+{{Add action button|JSC}}
+
+[[Category:Page required for Actionable Extension]]
+</noinclude>

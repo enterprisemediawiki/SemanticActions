@@ -1,0 +1,60 @@
+<noinclude><span class="actionable_button add_action">{{#formlink:form=Actionable|link text=Add an action|link type=text|query string=|new window}}</span>
+
+{{Form
+|HAS TEMPLATES=
+|DESCRIPTION=Used to create an action
+|CLASS=
+|HIGH USE=
+|FORM DEFINES NAME=
+}}
+
+[[Category:Page required for Actionable Extension]]
+</noinclude><includeonly>{{{info|edit title=Editing|create title=Creating action|page name=Action:<unique number;start=1>}}}
+{{{for template|Actionable}}}<!--
+
+BEGIN TABLE FOR META DATA
+
+--><table class="actionable"><!--
+
+SUMMARY
+
+--><tr><td>'''Action'''</td><td>{{{field|SUMMARY|input type=textarea|rows=1|autogrow|mandatory}}}</td></tr><!--
+
+ACTION_STATUS
+
+--><tr><td>'''Status'''</td><td>{{{field|ACTION_STATUS|input type=radiobutton|property=Action status|default=Open|mandatory|show on select=Closed=>ClosedStatus}}}</td></tr><!--
+
+DUE_DATE
+
+--><tr><td>'''Due'''</td><td>{{{field|DUE_DATE|input type=datepicker}}}</td></tr><!--
+
+ASSIGNED_TO
+
+--><tr><td>'''Actionees'''</td><td>{{{field|ASSIGNED_TO|input type=tokens|values from category=Person|list}}}</td></tr><!--
+
+LABEL
+
+--><tr><td>'''[[:Category:Label|<span style="color: #ffffff;">Labels</span>]]'''</td><td>{{{field|LABEL|input type=tokens|namespace=Label|values from namespace=Label|list}}}</td></tr><!--
+
+RELATED_ARTICLE
+
+--><tr><td>'''Related articles'''</td><td>{{{field|RELATED_ARTICLE|input type=tokens|values from namespace=Main|list}}}</td></tr><!--
+
+DETAILS
+
+--><tr><td>'''Details'''</td><td>{{{field|DETAILS|input type=textarea|rows=4|autogrow}}}</td></tr><!--
+
+RESOLUTION
+
+--><tr id="ClosedStatus"><td>'''Resolution'''</td><td>{{{field|RESOLUTION|input type=textarea|rows=4|autogrow}}}</td></tr></div><!--
+
+--></table><!--
+
+END TABLE FOR META DATA
+
+-->{{{standard input|summary}}}
+
+{{{standard input|watch}}}
+
+{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|cancel}}}
+</includeonly>

@@ -1,0 +1,14 @@
+{{#default_form:Label}}<!--
+
+Show all labels as buttons
+
+-->
+== Labels with defined colors ==
+{{#ask: [[Category:Label]]
+|format=template
+|template=Label button
+|link=none
+}}
+
+
+[[Category:Page required for Actionable Extension]]

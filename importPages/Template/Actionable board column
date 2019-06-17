@@ -1,0 +1,98 @@
+<includeonly><!--
+
+DEFINE QUERY PARAMETERS USED IN MULTIPLE PLACES
+
+-->{{#vardefine:commonQueryPart|[[Category:Actionable]] <!--
+  -->{{#switch:{{{1|}}} | Open = [[Action status::Open]] | Closed = [[Action status::Closed]] | }}<!--
+  -->{{#if:{{{2|}}}|{{#arraymap:{{{2|}}}|,|VAR|[[Related article::VAR]]|}} |}} }}<!--
+
+ONLY SET THE REST FOR THE FIRST COLUMN
+
+-->{{#if:{{{3|}}}||<!--
+
+SET VARIABLE FOR LIST OF ACTIONS FOR THIS TABLE THAT DO NOT HAVE LABELS SELECTED FOR COLUMNS
+for each action (query actions open/closed/all related articles)
+show action labels
+for each label
+check if label is found in array of labels used for this board
+if not found, add to array of actions to list in this column
+-->{{#arraydefine:boardLabels|{{{4|}}}}}<!--
+--><!--
+-->{{#vardefine:actions|{{#ask: {{#var:commonQueryPart}} |format=plainlist |link=none |limit=5000 }}}}<!--
+-->{{#vardefine:actionRepresented|}}<!--
+-->{{#vardefine:actionsNotRepresented|}}<!--
+
+BEGIN ARRAYMAP ON EACH ACTION
+
+-->{{#arraymap:{{#var:actions}}|,|ACTION|<!--
+
+FOR EACH ACTION DO ARRAYMAP ON LABELS OF THAT ACTION
+
+-->{{#arraymap:{{#show:ACTION|?Label|format=plainlist|link=none}}|,|LABEL|<!--
+
+FOR EACH LABEL IF LABEL IS IN COLUMN LABELS, ADD TO VARIABLE ACTIONREPRESENTED
+
+-->{{#ifeq:yes|{{#arraysearch:boardLabels|LABEL|0|yes}}|<!-- THEN -->{{#vardefine:actionREPRESENTED|True}}|<!-- ELSE NOTHING --><!--END IF-->}}<!--END ARRAYMAP-->|}}<!--
+
+IF ACTION IS REPRESENTED IN ANOTHER COLUMN, DO NOTHING; ELSE ADD IT TO ACTIONSNOTREPRESENTED
+
+-->{{#ifeq:{{#var:actionREPRESENTED}}|True||{{#vardefine:actionsNotRepresented|ACTION, {{#var:actionsNotRepresented}}}}}}<!--
+-->{{#vardefine:actionREPRESENTED|}} |}} }}<!--
+
+SET VARIABLE FOR DEFAULT RELATED ARTICLES FOR NEW ACTIONS
+
+-->{{#vardefine:newActionDefaultRelatedArticles|{{{6|}}}}}<!--
+
+BUILD TABLE
+
+--><td style="background-color:#f5f5f5;"><!--
+
+--><table class="actionable_board actionable_board_action">
+<tr><th>{{#if:{{{3|}}}|{{Actionable board column label button|{{{3|}}}|{{#var:newActionDefaultRelatedArticles}}}}|None of these labels}}</th></tr>
+{{#if:{{{3|}}}|<!--
+
+IF THIS IS FOR A COLUMN WITH A LABEL HEADER, QUERY FOR ACTIONS WITH THAT LABEL
+
+-->{{#ask: {{#var:commonQueryPart}} [[Label::{{{3}}}]]
+|?Action ID
+|?Due date
+|?Assigned to
+|?Label
+|?Related article
+|format=template
+|template=Actionable board row
+|userparam={{{5|Edit}}}
+|link=none
+}}|<!--
+
+ELSE QUERY FOR ACTIONS WITHOUT ANY OF THE HEADER LABELS, ONLY IF THERE ARE ANY SUCH ACTIONS
+
+-->{{#if: {{#var:actionsNotRepresented}}|{{#ask: {{#arraymap:{{#var:actionsNotRepresented}}|,|VAR|{{#var:commonQueryPart}} [[VAR]]| OR }}
+|?Action ID
+|?Due date
+|?Assigned to
+|?Label
+|?Related article
+|format=template
+|template=Actionable board row
+|userparam={{{5|View}}}
+|link=none
+}}|}}|}}<!--
+--></table></td><!--
+
+UNSET VARIABLES
+
+-->{{#vardefine:commonQueryPart|}}<!--
+-->{{#vardefine:actions|}}<!--
+-->{{#vardefine:actionRepresented|}}<!--
+-->{{#vardefine:actionsNotRepresented|}}<!--
+--></includeonly><noinclude>This template creates a kanban board column.
+
+<nowiki>{{{1}}}</nowiki> = Open, Closed, or All (only show actions with this Action status)<br />
+<nowiki>{{{2}}}</nowiki> = List of Related articles (only show actions with all of these Related articles)<br />
+<nowiki>{{{3}}}</nowiki> = Label to use for this column (only show actions in this column with this Label)<br />
+<nowiki>{{{4}}}</nowiki> = List of "Does not have label" values to use for this column (only show actions in this column with none of these Labels)<br />
+<nowiki>{{{5}}}</nowiki> = View or Edit (do you want action links to go to the view or edit mode?)<br />
+<nowiki>{{{6}}}</nowiki> = List of default Related articles for new actions created from links in this table<br />
+
+[[Category:Page required for Actionable Extension]]</noinclude>

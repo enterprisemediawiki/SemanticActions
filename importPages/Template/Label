@@ -1,0 +1,38 @@
+<includeonly><!--
+
+SET PROPERTIES
+
+-->{{DISPLAYTITLE:{{{ALIAS|}}}}}{{#set:
+|Color = {{{COLOR|}}}
+|Alias = {{{ALIAS|}}}
+}}[[Category:Label]]<!--
+
+SHOW WHAT THE LABEL WILL LOOK LIKE
+
+-->{{Label button|{{FULLPAGENAME}}}}
+
+<h2> Actionables with this label </h2>
+{{#ask: [[Category:Actionable]] [[Label::{{FULLPAGENAME}}]]
+|?Action status=Status
+|?Assigned to
+|?Due date
+|?Label
+|?Related article
+|format=table
+|limit=5000
+|sort=Action status
+|order=DESC
+}}
+
+</includeonly><noinclude><!--
+
+Show all labels as buttons
+
+-->{{#ask: [[Category:Label]]
+|format=template
+|template=Label button
+|link=none
+}}
+[[Category:Page required for Actionable Extension]]
+
+</noinclude>

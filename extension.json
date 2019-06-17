@@ -57,5 +57,11 @@
 		"smwgNamespacesWithSemanticLinks[NS_LABEL]": true,
 		"wgVisualEditorAvailableNamespaces[NS_ACTION]": true,
 		"wgVisualEditorAvailableNamespaces[NS_LABEL]": true
+	},
+	"AutoloadClasses": {
+		"SemanticActions": "includes/SemanticActions.php"
+	},
+	"Hooks": {
+		"PageImporterRegisterPageLists": "SemanticActions::onPageImporterRegisterPageLists"
 	}
 }
