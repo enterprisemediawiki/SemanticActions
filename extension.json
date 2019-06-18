@@ -19,10 +19,11 @@
 	},
 	"manifest_version": 1,
 	"ResourceModules": {
-		"ext.SemanticActions": {
+		"ext.SemanticActions.styles": {
 			"styles": [
 				"SemanticActions.css"
-			]
+			],
+			"position": "bottom"
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -62,6 +63,7 @@
 		"SemanticActions": "includes/SemanticActions.php"
 	},
 	"Hooks": {
-		"PageImporterRegisterPageLists": "SemanticActions::onPageImporterRegisterPageLists"
+		"PageImporterRegisterPageLists": "SemanticActions::onPageImporterRegisterPageLists",
+		"BeforePageDisplay": "SemanticActions::onBeforePageDisplay"
 	}
 }

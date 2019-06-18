@@ -39,5 +39,13 @@ class SemanticActions {
 	];
 
 	}
-	
+
+	public static function onBeforePageDisplay( $out ) {
+
+		$out->addModuleStyles( 'ext.SemanticActions.styles' );
+
+		return true;
+
+	}
+
 }
