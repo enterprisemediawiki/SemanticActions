@@ -32,7 +32,7 @@ class SemanticActions {
 		],
 
 		// the directory where all paths in your list of pages are based from
-		"root" => __DIR__ . '/importPages',
+		"root" => dirname(__DIR__) . '/importPages',
 
 		// edit summary used when PageImporter edits pages
 		"comment" => "Updated with content from Extension:SemanticActions version 1.0.0"
