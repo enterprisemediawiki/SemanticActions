@@ -1,13 +1,5 @@
 <noinclude><span class="actionable_button add_action">{{#formlink:form=Label|link text=Add a label|link type=text|query string=|new window}}</span>
 
-{{Form
-|HAS TEMPLATES=
-|DESCRIPTION=Used to create a label
-|CLASS=
-|HIGH USE=
-|FORM DEFINES NAME=
-}}
-
 [[Category:Page required for Actionable Extension]]
 </noinclude><includeonly>{{{info|edit title=Editing|create title=Creating label|page name=Label:<Label[ALIAS]>}}}
 {{{for template|Label}}}<!--

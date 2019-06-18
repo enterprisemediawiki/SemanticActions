@@ -1,13 +1,5 @@
 <noinclude><span class="actionable_button add_action">{{#formlink:form=Actionable|link text=Add an action|link type=text|query string=|new window}}</span>
 
-{{Form
-|HAS TEMPLATES=
-|DESCRIPTION=Used to create an action
-|CLASS=
-|HIGH USE=
-|FORM DEFINES NAME=
-}}
-
 [[Category:Page required for Actionable Extension]]
 </noinclude><includeonly>{{{info|edit title=Editing|create title=Creating action|page name=Action:<unique number;start=1>}}}
 {{{for template|Actionable}}}<!--
