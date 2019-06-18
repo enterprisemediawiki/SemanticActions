@@ -14,6 +14,7 @@ class SemanticActions {
 			"Template:Actionable" => "Template/Actionable",
 			"Template:Add action button" => "Template/Add action button",
 			"Template:Label" => "Template/Label",
+			"Template:Label button" => "Template/Label button",
 			"Template:Search actions button" => "Template/Search actions button",
 			"Category:Actionable" => "Category/Actionable",
 			"Category:Label" => "Category/Label",
