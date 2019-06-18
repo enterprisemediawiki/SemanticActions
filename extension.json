@@ -23,7 +23,7 @@
 			"styles": [
 				"SemanticActions.css"
 			]
-		},
+		}
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
