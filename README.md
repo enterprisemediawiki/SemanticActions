@@ -13,6 +13,23 @@ An action tracking system for a Semantic MediaWiki.
 * [Extension:Page Forms](https://www.mediawiki.org/wiki/Extension:Page_Forms)
 * [Extension:Page Importer](https://github.com/enterprisemediawiki/PageImporter)
 
+## Installation
+SemanticActions should be loaded using wfLoadExtension:
+
+```
+wfLoadExtension('SemanticActions');
+```
+
+This extension requires some pages to be imported using [Extension:PageImporter](https://github.com/enterprisemediawiki/PageImporter).
+
+```
+php extensions/PageImporter/importPages.php
+```
+
+tbd - not sure if running update.php is required
+
+## Configuration
+
 ## Assumptions
 This extension assumes you have a Template:Person that is used for pages about the people using your wiki. Actions can be assigned to values in Category:Person (which would be set in Template:Person).
 
@@ -35,24 +52,6 @@ You might want to query all open actions assigned to a person and display those 
 |intro = 
 }}
 ```
-
-## Installation
-SemanticActions should be loaded using wfLoadExtension:
-
-```
-wfLoadExtension('SemanticActions');
-```
-
-This extension requires some pages to be imported using [Extension:PageImporter](https://github.com/enterprisemediawiki/PageImporter).
-
-```
-php extensions/PageImporter/importPages.php
-```
-
-tbd - not sure if running update.php is required
-
-## Configuration
-
 
 ## Use
 Each action is saved as its own wiki page. By doing this, each action retains its history and has an associated discussion page. We can also query actions like any other content in the wiki. So actions can be queried and filtered by the status, due date, actionee, label, and related articles.
