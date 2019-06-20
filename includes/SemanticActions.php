@@ -9,6 +9,7 @@ class SemanticActions {
 		// list of pages to create and the corresponding files to use as content
 		"pages" => [
 			"Template:Actionable board column" => "Template/Actionable board column",
+			"Template:Actionable board column label button" => "Template/Actionable board column label button",
 			"Template:Actionable board row" => "Template/Actionable board row",
 			"Template:Actionable board" => "Template/Actionable board",
 			"Template:Actionable" => "Template/Actionable",
