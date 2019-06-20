@@ -177,3 +177,4 @@ __NOTOC__<br style="clear:both;" />
 }}
 <headertabs/>
 ```
+![Image of action board](/images/Action_footer.png)
