@@ -93,7 +93,7 @@ span.actionable_button.search_action a {
 	color: white;
 }
 .actionable_button, .search_action a.external, .search_action a.external:visited {
-	color: white;
+	color: white !important;
 }
 .actionable_button .new a:link {
 	color: #e60000; /* bright red */
