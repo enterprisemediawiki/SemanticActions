@@ -6,9 +6,7 @@ SET COLSPAN
 
 BUTTONS TO SEARCH AND ADD ACTIONS
 
--->{{Search actions button}} {{Add action button|{{{6|}}}}}
-
-''See '''[[fod:Actions]]''' for more information''<!--
+-->{{Search actions button}} {{Add action button|{{{6|}}}}} ''See '''[https://github.com/enterprisemediawiki/SemanticActions this page]''' for more information''<!--
 
 BUILD TABLE
 
