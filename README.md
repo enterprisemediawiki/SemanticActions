@@ -1,11 +1,11 @@
 # Semantic Actions
 An action tracking system for a Semantic MediaWiki.
 
-(placeholder for screenshot of action board)
+![Image of action board](/images/Action_board.png)
 
-(placeholder for screenshot of semantic query of actions)
+![Image of action board](/images/Action_board_table.png)
 
-(placeholder for screenshot of action form)
+![Image of action board](/images/Action_form.png)
 
 ## Dependencies
 * [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki)
@@ -56,7 +56,7 @@ Each action is saved as its own wiki page. By doing this, each action retains it
 When you create an action, it is important to add related articles so the action will appear in queries.
 
 ### Action form fields
-(placeholder for screenshot of action form)
+![Image of action board](/images/Action_form.png)
 
 **Action** is the summary and title of the action. Make it specific and concise.
 
@@ -68,7 +68,7 @@ When you create an action, it is important to add related articles so the action
 
 **Labels** are generic descriptors intended to be used to filter actions (e.g. "Low priority", "In work", "Bug", etc).
 
-(placeholder for example label buttons)
+![Image of action board](/images/Action_labels.png)
 
 **Related articles** are literally any page in the wiki. The generic footer can be configured so actions automatically show up in the footer of the wiki page for each related article (see below for instructions on how to do this). Related articles are also used to define which actions are displayed in an action board.
 
@@ -96,13 +96,13 @@ To create an action board, use the template as shown below.
 |Open
 |Pump module
 |In work, Risk trade, Ready for review
-|
+|True
 |View
 |Pump module
 }}
 ```
 
-(placeholder for screenshot of this example action board)
+![Image of action board](/images/Action_board.png)
 
 ### Traditional semantic queries
 If you prefer another format, you may still use all the various results formats provided by [Semantic MediaWiki](https://www.semantic-mediawiki.org/wiki/Help:Result_formats) and [Extension:Semantic Result Formats](https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Result_Formats).
@@ -123,10 +123,10 @@ For example, you can use the standard table format as shown in the example below
 }}
 ```
 
-(placeholder for screenshot of above query results)
+![Image of action board](/images/Action_board_table.png)
 
 ### Buttons
-(placeholder for search actions button and add action button)
+![Image of action board](/images/Action_search_add_buttons.png)
 
 To add a button linking to MediaWiki advanced search, filtered to only search the Action namespace, use the following template call:
 
