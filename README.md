@@ -1,11 +1,11 @@
 # Semantic Actions
 An action tracking system for a Semantic MediaWiki.
 
-(placeholder for screenshot of action board)
+![Image of action board](/images/Action_board.png)
 
-(placeholder for screenshot of semantic query of actions)
+![Image of action board](/images/Action_board_table.png)
 
-(placeholder for screenshot of action form)
+![Image of action board](/images/Action_form.png)
 
 ## Dependencies
 * [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki)
@@ -39,11 +39,15 @@ You might want to query all open actions assigned to a person and display those 
 ## Installation
 SemanticActions should be loaded using wfLoadExtension:
 
-`wfLoadExtension('SemanticActions');`
+```
+wfLoadExtension('SemanticActions');
+```
 
 This extension requires some pages to be imported using [Extension:PageImporter](https://github.com/enterprisemediawiki/PageImporter).
 
-`php extensions/PageImporter/importPages.php`
+```
+php extensions/PageImporter/importPages.php
+```
 
 tbd - not sure if running update.php is required
 
@@ -56,7 +60,7 @@ Each action is saved as its own wiki page. By doing this, each action retains it
 When you create an action, it is important to add related articles so the action will appear in queries.
 
 ### Action form fields
-(placeholder for screenshot of action form)
+![Image of action board](/images/Action_form.png)
 
 **Action** is the summary and title of the action. Make it specific and concise.
 
@@ -68,7 +72,7 @@ When you create an action, it is important to add related articles so the action
 
 **Labels** are generic descriptors intended to be used to filter actions (e.g. "Low priority", "In work", "Bug", etc).
 
-(placeholder for example label buttons)
+![Image of action board](/images/Action_labels.png)
 
 **Related articles** are literally any page in the wiki. The generic footer can be configured so actions automatically show up in the footer of the wiki page for each related article (see below for instructions on how to do this). Related articles are also used to define which actions are displayed in an action board.
 
@@ -96,13 +100,13 @@ To create an action board, use the template as shown below.
 |Open
 |Pump module
 |In work, Risk trade, Ready for review
-|
+|True
 |View
 |Pump module
 }}
 ```
 
-(placeholder for screenshot of this example action board)
+![Image of action board](/images/Action_board.png)
 
 ### Traditional semantic queries
 If you prefer another format, you may still use all the various results formats provided by [Semantic MediaWiki](https://www.semantic-mediawiki.org/wiki/Help:Result_formats) and [Extension:Semantic Result Formats](https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Result_Formats).
@@ -123,23 +127,53 @@ For example, you can use the standard table format as shown in the example below
 }}
 ```
 
-(placeholder for screenshot of above query results)
+![Image of action board](/images/Action_board_table.png)
 
 ### Buttons
-(placeholder for search actions button and add action button)
+![Image of action board](/images/Action_search_add_buttons.png)
 
 To add a button linking to MediaWiki advanced search, filtered to only search the Action namespace, use the following template call:
 
-`{{Search actions button}}`
+```
+{{Search actions button}}
+```
 
 To add a button on a page linking to the form to add an action, use the following template call:
 
-`{{Add action button}}`
+```
+{{Add action button}}
+```
 
 It is highly recommended that you pass at least one pagename to this template call. Pagenames passed to Template:Add action button will be used to pre-populate the Related article field. This is the best way to link actions to relevant articles and to aid in filtering actions in queries. Here is an example of a button where the pages for "Beer" and "Cheese" are passed as Related articles:
 
-`{{Add action button|Beer,Cheese}}`
+```
+{{Add action button|Beer,Cheese}}
+```
 
+### Sidebar link
+You can customize the sidebar in MediaWiki. You may choose to add a link in your wiki's sidebar allowing users to add an action. Done right, this link will pre-populate the Related article field of the new action with the name of the page you were on.
+
+```
+{{canonicalurl:Special:FormEdit/Actionable|Actionable%5BRELATED_ARTICLE%5D={{PAGENAME}}}}|Add an action
+```
 
 ### Footer
-tbd
+If you install [Extension:Header Footer](https://www.mediawiki.org/wiki/Extension:Header_Footer), you can modify the page MediaWiki:Hf-nsfooter- to include a query to show all actions related to the page. The example code below also uses [Extension:Header Tabs](https://www.mediawiki.org/wiki/Extension:Header_Tabs), which allows you to append multiple queries formatted in different tabs.
+
+```
+__NOTOC__<br style="clear:both;" />
+{{#ask: [[Category:Actionable]] [[Related article::{{PAGENAME}}]]
+|mainlabel=Action
+|?Action status=Status
+|?Due date
+|?Assigned to
+|?Label
+|?Related article
+|format=table
+|sort=Action ID
+|order=DESC
+|intro= <h1> Actions </h1>
+''See '''[https://github.com/enterprisemediawiki/SemanticActions this page]''' for more information''
+}}
+<headertabs/>
+```
