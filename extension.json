@@ -17,7 +17,7 @@
 			"i18n"
 		]
 	},
-	"manifest_version": 1,
+	"manifest_version": 2,
 	"ResourceModules": {
 		"ext.SemanticActions.styles": {
 			"styles": [
@@ -52,18 +52,20 @@
 			"name": "Label_Talk"
 		}
 	],
-	"config": {
-		"_prefix": "",
-		"smwgNamespacesWithSemanticLinks[NS_ACTION]": true,
-		"smwgNamespacesWithSemanticLinks[NS_LABEL]": true,
-		"wgVisualEditorAvailableNamespaces[NS_ACTION]": true,
-		"wgVisualEditorAvailableNamespaces[NS_LABEL]": true
+	"attributes": {
+		"VisualEditor": {
+			"AvailableNamespaces": {
+				"690": true,
+				"692": true
+			}
+		}
 	},
 	"AutoloadClasses": {
 		"SemanticActions": "includes/SemanticActions.php"
 	},
 	"Hooks": {
 		"PageImporterRegisterPageLists": "SemanticActions::onPageImporterRegisterPageLists",
-		"BeforePageDisplay": "SemanticActions::onBeforePageDisplay"
+		"BeforePageDisplay": "SemanticActions::onBeforePageDisplay",
+		 "SetupAfterCache": "SemanticActions::onSetupAfterCache"
 	}
 }

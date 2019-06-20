@@ -49,4 +49,15 @@ class SemanticActions {
 
 	}
 
+	public static function onSetupAfterCache( ) {
+
+		global $smwgNamespacesWithSemanticLinks;
+
+		$smwgNamespacesWithSemanticLinks[NS_ACTION] = true;
+		$smwgNamespacesWithSemanticLinks[NS_LABEL] = true;
+
+		return true;
+
+	}
+
 }
