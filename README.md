@@ -37,7 +37,15 @@ You might want to query all open actions assigned to a person and display those 
 ```
 
 ## Installation
+SemanticActions should be loaded using wfLoadExtension:
 
+`wfLoadExtension('SemanticActions');`
+
+This extension requires some pages to be imported using [Extension:PageImporter](https://github.com/enterprisemediawiki/PageImporter).
+
+`php extensions/PageImporter/importPages.php`
+
+tbd - not sure if running update.php is required
 
 ## Configuration
 
