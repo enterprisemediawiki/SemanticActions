@@ -1,0 +1,16 @@
+<includeonly>{{#vardefine:color|{{#if:{{#show:{{{1|}}}|?Color}}|{{#show:{{{1|}}}|?Color}}|Gray}}}}<span class="actionable_button label_button_{{#var:color}}">{{#formredlink:form=Actionable|link text=+ {{#explode:{{{1|}}}|Label:|1}}|existing page link text=+ {{#show:{{{1|}}}|?Alias}}|link type=text|query string=Actionable[LABEL]={{{1|}}}&Actionable[RELATED_ARTICLE]={{#if:{{{2|}}}|{{{2}}}|{{FULLPAGENAME}}}}|target=|tooltip=Create a new action with label {{{1|}}}|new window}}</span>{{#vardefine:color|}}</includeonly><noinclude>
+
+<nowiki>{{{1}}}</nowiki> = Label name<br />
+<nowiki>{{{2}}}</nowiki> = List of default Related articles for new actions created from link in this button<br />
+
+<!--
+
+Show all labels as buttons with links to add action
+
+-->{{#ask: [[Category:Label]]
+|format=template
+|template=Actionable board column label button
+|link=none
+}}
+
+[[Category:Page required for Actionable Extension]]</noinclude>
