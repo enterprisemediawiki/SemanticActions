@@ -25,6 +25,7 @@ class SemanticActions {
 			"Property:Action status" => "Property/Action status",
 			"Property:Alias" => "Property/Alias",
 			"Property:Assigned to" => "Property/Assigned to",
+			"Property:Color" => "Property/Color",
 			"Property:Due date" => "Property/Due date",
 			"Property:Label" => "Property/Label",
 			"Property:Related article" => "Property/Related article",
