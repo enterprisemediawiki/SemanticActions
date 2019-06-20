@@ -109,6 +109,7 @@ If you prefer another format, you may still use all the various results formats 
 
 For example, you can use the standard table format as shown in the example below.
 
+```
 {{#ask: [[Category:Actionable]] [[Related article::Pump module]]
 |?Action status=Status
 |?Assigned to
@@ -116,10 +117,11 @@ For example, you can use the standard table format as shown in the example below
 |?Label
 |?Related article
 |format=table
-|limit=5
+|limit=50
 |sort=Action status
 |order=DESC
 }}
+```
 
 (placeholder for screenshot of above query results)
 
