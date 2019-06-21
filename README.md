@@ -78,6 +78,8 @@ When you create an action, it is important to add related articles so the action
 
 **Details** is where you can more fully describe the action and add incremental progress.
 
+**Resolution** is a field that only shows up when you mark an action as closed. Describe how the action was resolved.
+
 ### Action board
 An action board (like a kanban board) can be created on any wiki page and can be configured to display any set of actions based on status, labels, and related articles.
 
