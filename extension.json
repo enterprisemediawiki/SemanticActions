@@ -17,7 +17,11 @@
 			"i18n"
 		]
 	},
-	"manifest_version": 2,
+	"config": {
+		"_prefix": "eg",
+		"SemanticActionsAssigneeValuesFrom": "Person"
+	},
+	"manifest_version": 1,
 	"ResourceModules": {
 		"ext.SemanticActions.styles": {
 			"styles": [
