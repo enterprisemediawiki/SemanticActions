@@ -161,7 +161,7 @@ It is highly recommended that you pass at least one pagename to this template ca
 You can customize the sidebar in MediaWiki. You may choose to add a link in your wiki's sidebar allowing users to add an action. Done right, this link will pre-populate the Related article field of the new action with the name of the page you were on.
 
 ```
-{{canonicalurl:Special:FormEdit/Actionable|Actionable%5BRELATED_ARTICLE%5D={{PAGENAME}}}}|Add an action
+{{canonicalurl:Special:FormEdit/Actionable|Actionable%5BRELATED_ARTICLE%5D={{FULLPAGENAME}}}}|Add an action
 ```
 
 ### Footer
