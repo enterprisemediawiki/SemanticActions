@@ -63,6 +63,7 @@ IF THIS IS FOR A COLUMN WITH A LABEL HEADER, QUERY FOR ACTIONS WITH THAT LABEL
 |template=Actionable board row
 |userparam={{{5|Edit}}}
 |link=none
+|limit=5000
 }}|<!--
 
 ELSE QUERY FOR ACTIONS WITHOUT ANY OF THE HEADER LABELS, ONLY IF THERE ARE ANY SUCH ACTIONS
@@ -77,6 +78,7 @@ ELSE QUERY FOR ACTIONS WITHOUT ANY OF THE HEADER LABELS, ONLY IF THERE ARE ANY S
 |template=Actionable board row
 |userparam={{{5|View}}}
 |link=none
+|limit=5000
 }}|}}|}}<!--
 --></table></td><!--
 
