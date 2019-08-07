@@ -35,6 +35,11 @@ table.actionable_board {
 table.actionable_board_action td {
 	border: 1px solid black;
 }
+table.actionable_board_action {
+	display: block;
+	height: 700px;
+	overflow-y: scroll;
+}
 .actionable_board p {
 	margin: 1px 0;
 }
