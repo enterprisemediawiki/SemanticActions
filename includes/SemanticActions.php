@@ -6,9 +6,8 @@ class SemanticActions {
 
 		global $egSemanticActionsAssigneeValuesFrom;
 		
-		$actionableFormVersion = $egSemanticActionsAssigneeValuesFrom;
-		if($actionableFormVersion !== "User"){ $actionableFormVersion = "Person"; }
-		$actionableFormValue = "Form/Actionable(" . $actionableFormVersion . ")";
+		$assigneeVersion = $egSemanticActionsAssigneeValuesFrom;
+		if($assigneeVersion !== "User"){ $assigneeVersion = "Person"; }
 
 		$pageLists['SemanticActions'] = [
 
@@ -16,9 +15,9 @@ class SemanticActions {
 			"pages" => [
 				"Template:Actionable board column" => "Template/Actionable board column",
 				"Template:Actionable board column label button" => "Template/Actionable board column label button",
-				"Template:Actionable board row" => "Template/Actionable board row",
+				"Template:Actionable board row" => "Template/Actionable board row(" . $assigneeVersion . ")",
 				"Template:Actionable board" => "Template/Actionable board",
-				"Template:Actionable" => "Template/Actionable",
+				"Template:Actionable" => "Template/Actionable(" . $assigneeVersion . ")",
 				"Template:Add action button" => "Template/Add action button",
 				"Template:Label" => "Template/Label",
 				"Template:Label button" => "Template/Label button",
@@ -26,7 +25,7 @@ class SemanticActions {
 				"Category:Actionable" => "Category/Actionable",
 				"Category:Label" => "Category/Label",
 				"Category:Page required for Actionable Extension" => "Category/Page required for Actionable Extension",
-				"Form:Actionable" => $actionableFormValue,
+				"Form:Actionable" => "Form/Actionable(" . $assigneeVersion . ")",
 				"Form:Label" => "Form/Label",
 				"Property:Action ID" => "Property/Action ID",
 				"Property:Action status" => "Property/Action status",
