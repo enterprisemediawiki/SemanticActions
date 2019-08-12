@@ -45,7 +45,7 @@ You might want to query all open actions assigned to a person and display those 
 <h2> Open Actions </h2>
 ''See [[Actions]] for more information.''
 
-{{#ask: [[Category:Actionable]] [[Action status::Open]] [[Assigned to::{{PAGENAME}}]]
+{{#ask: [[Category:Actionable]] [[Action status::Open]] [[Assigned to::{{FULLPAGENAME}}]]
 |mainlabel=Action
 |?Due date
 |?Assigned to
