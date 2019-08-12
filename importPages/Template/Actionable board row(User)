@@ -1,0 +1,43 @@
+<includeonly><tr><td>{{#ifeq:{{{#userparam}}}|View|<small>{{#formlink: link text=[edit]|query string=|target={{{1|}}}|window|reload|returnto={{FULLPAGENAME}} }}</small> [[{{{1|}}}|{{#show:{{{1|}}}|?Summary}}]]|{{#formlink: link text={{#show:{{{1|}}}|?Summary}}|query string=|target={{{1|}}}|window|reload|returnto={{FULLPAGENAME}} }}}}<!--
+
+LABELS
+
+-->{{#if:{{{5|}}}|<br />{{#arraymap:{{{5|}}}|,|x|{{Label button|x}}|}}|}}<!--
+
+RELATED ARTICLES
+
+-->{{#if:{{{6|}}}|<br />{{#arraymap:{{{6|}}}|,|x|<span class="actionable_button related_article">[[x]]</span>|}}|}}<!--
+
+BEGIN ID, DUE_DATE, ASSIGNED_TO all in one row
+
+--><br /><!--
+
+ID
+
+--><p style="text-align:left;"><span style="font-size: 12px; color:#707070"><nowiki>#</nowiki>{{{2|}}}</span><!--
+
+DUE_DATE
+
+-->{{#if:{{{3|}}}|<!--
+
+IF DUE_DATE IS IN PAST, RED; ELSE GRAY
+
+-->&nbsp;<span style="color:{{#ifexpr:{{#time:Ymd|{{{3|}}}}}<{{#time:Ymd}}|#db3b21|#707070}};">{{#time: M d, Y | {{{3|}}} }}</span>|}}<!--
+
+ASSIGNED_TO
+
+-->{{#if:{{{4|}}}|<span style="float:right;">{{#arraymap:{{{4|}}}|,|x|[[User:x|x]]|,}}|}}</span></p><!--
+
+END ID, DUE_DATE, ASSIGNED_TO all in one row
+
+--></td></tr></includeonly><noinclude>This template formats each actionable in a column of a board.
+
+<nowiki>{{{1|}}}</nowiki> = Summary (linked to page)<br />
+<nowiki>{{{2|}}}</nowiki> = Action ID<br />
+<nowiki>{{{3|}}}</nowiki> = Due date<br />
+<nowiki>{{{4|}}}</nowiki> = Assigned to<br />
+<nowiki>{{{5|}}}</nowiki> = Label<br />
+<nowiki>{{{6|}}}</nowiki> = Related article<br />
+<nowiki>{{{#userparam}}}</nowiki> = View or Edit (do you want action links to go to the view or edit mode?)<br />
+
+[[Category:Page required for Actionable Extension]]</noinclude>

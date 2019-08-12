@@ -1,0 +1,100 @@
+<includeonly><!--
+
+SET DISPLAY TITLE
+
+-->{{DISPLAYTITLE:{{{SUMMARY|}}}}}<!--
+
+BEGIN DETECT AND SET ABSENCE OF DEFINED LABELS
+
+-->{{#vardefine:noLabel|}}{{#arraydefine:thisActionsLabels|{{{LABEL|}}}|,|}}<!--
+
+-->{{#arraymap:{{#ask: [[Category:Label]]
+|link=none
+|format=plainlist
+}}|,|LABEL|<!--
+
+FOR EACH DEFINED LABEL DO THIS
+
+-->{{#if:{{#arraysearch:thisActionsLabels|LABEL}}||<!--
+
+IF THIS ACTION HAS THE LABEL DO NOTHING
+ELSE ADD LABEL TO LIST OF VALUES FOR PROPERTY Does not have label
+
+-->{{#vardefine:noLabel|{{#if:{{#var:noLabel}}|{{#var:noLabel}},LABEL|LABEL}}}}}}<!--
+
+END ARRAYMAP
+
+-->|}}<!--
+
+SET PROPERTY Does not have label
+
+-->{{#set:
+|Does not have label={{#var:noLabel}}|+sep=,}}{{#vardefine:noLabel|}}<!--
+
+END DETECT AND SET ABSENCE OF DEFINED LABELS
+
+--><!--
+
+SET SEMANTIC PROPERTIES
+
+-->{{#set:
+|Action ID={{#sub:{{FULLPAGENAME}}|7|0}} 
+|Summary={{{SUMMARY|}}}
+|Assigned to={{#arraymap:{{{ASSIGNED_TO|}}}|,|x|User:x|,}}|+sep=,
+|Action status={{{ACTION_STATUS|Open}}}
+|Due date={{{DUE_DATE|}}}
+|Related article={{{RELATED_ARTICLE|}}}|+sep=,
+|Label={{{LABEL|}}}|+sep=,
+|Resolution={{{RESOLUTION|}}}
+|Details={{{DETAILS|}}}
+}}<!--
+
+DISPLAY DATA
+
+--><!--
+
+ACTION_STATUS, ACTION_ID, SUMMARY
+
+--><p style="font-weight: 900; font-size:25px; color:#FFFFFF; background-color:#{{#ifeq: {{{ACTION_STATUS|}}} | Open | 14866d | 54595d }}; padding:0 5px; margin: 0px;">{{{ACTION_STATUS|}}}</p><!--
+
+BEGIN TABLE FOR META DATA
+
+--><table class="actionable"><!--
+
+DUE_DATE
+
+--><tr><td>'''Due'''</td><td>{{{DUE_DATE|}}}</td></tr><!--
+
+ASSIGNED_TO
+
+--><tr><td>'''Actionees'''</td><td>{{#if:{{{ASSIGNED_TO|}}}|{{#arraymap:{{{ASSIGNED_TO|}}}|,|x|[[User:x|x]]|,}}</td></tr>|}}<!--
+
+LABEL
+
+-->{{#if:{{{LABEL|}}} |<tr><td>'''Labels'''</td><td>{{#arraymap:{{{LABEL|}}}|,|XXX|{{#formredlink:form=Label|link text=XXX|existing page link text=XXX|link type=button|query string=Label[ALIAS]={{#explode:XXX|Label:|1}}|target=XXX|tooltip=Create a page for this label to customize its color|new window}}|,}}</td></tr>|}}<!--
+
+RELATED_ARTICLE
+
+-->{{#if:{{{RELATED_ARTICLE|}}}|<tr><td>'''Related articles'''</td><td>{{#arraymap:{{{RELATED_ARTICLE|}}}|,|x|[[x]]|,}}</td></tr>|}}</table><!--
+
+END TABLE FOR META DATA
+
+--><!--
+
+RESOLUTION
+
+-->{{#if:{{{RESOLUTION|}}}|'''Resolution:''' {{{RESOLUTION|}}}<br />|}}<!--
+
+DETAILS
+
+-->{{#if:{{{DETAILS|}}}|'''Details:'''<br />{{{DETAILS|}}}}}<!--
+
+APPLY CATEGORY
+
+-->[[Category:Actionable]]<!--
+
+FREE TEXT APPEARS BELOW
+
+--></includeonly><noinclude>
+
+[[Category:Page required for Actionable Extension]]</noinclude>
