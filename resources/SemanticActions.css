@@ -26,7 +26,7 @@ table.actionable_board {
 	background-color: #d5d5d5;
 	border: 1px solid black;
 	padding: 5px;
-	min-width: 320px;
+	min-width: 290px;
 }
 .actionable_board td {
 	padding: 0 5px 5px;
