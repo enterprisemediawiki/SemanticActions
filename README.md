@@ -14,6 +14,7 @@ An action tracking system for a Semantic MediaWiki.
 * [Extension:Display Title](https://www.mediawiki.org/wiki/Extension:Display_Title)
 * [Extension:Page Importer](https://github.com/enterprisemediawiki/PageImporter)
 * [Extension:ParserFunctions](https://www.mediawiki.org/wiki/Extension:ParserFunctions)
+* [Extension:Arrays](https://www.mediawiki.org/wiki/Extension:Arrays)
 
 ## Installation
 SemanticActions should be loaded using wfLoadExtension:
