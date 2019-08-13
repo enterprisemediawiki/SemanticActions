@@ -9,7 +9,7 @@ An action tracking system for a Semantic MediaWiki.
 
 ## Dependencies
 * [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki)
-* [Extension:Semantic Mediawiki](https://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki)
+* [Extension:Semantic Mediawiki](https://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki) 3.0+
 * [Extension:Page Forms](https://www.mediawiki.org/wiki/Extension:Page_Forms)
 * [Extension:Display Title](https://www.mediawiki.org/wiki/Extension:Display_Title)
 * [Extension:Page Importer](https://github.com/enterprisemediawiki/PageImporter)
