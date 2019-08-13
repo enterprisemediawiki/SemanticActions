@@ -26,7 +26,7 @@ IF DUE_DATE IS IN PAST, RED; ELSE GRAY
 
 ASSIGNED_TO
 
--->{{#if:{{{4|}}}|<span style="float:right;">{{#arraymap:{{{4|}}}|,|x|[[User:x|x]]|,}}|}}</span></p><!--
+-->{{#if:{{{4|}}}|<span style="float:right;">{{#arraymap:{{{4|}}}|,|x|[[x|{{PAGENAME:x}}]]|,}}|}}</span></p><!--
 
 END ID, DUE_DATE, ASSIGNED_TO all in one row
 
