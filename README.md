@@ -32,7 +32,7 @@ php extensions/PageImporter/importPages.php
 tbd - not sure if running update.php is required
 
 ## Configuration
-By default, you can assign actions to any page in Category:Person. For example, your wiki might have a page for each person with their name as the title of the page. If you don't have such a category set up and you just use the User namespace (like "User:NotSoAwesomeSteve"), the include the following line in your LocalSettings.php to configure actions to be assigned to any page in the User namespace. Note that this configuration will which file is imported for the action form, so you'll need to ensure you import pages after setting this configuration, as described above.
+By default, you can assign actions to any page in Category:Person. For example, your wiki might have a page for each person with their name as the title of the page. If you don't have such a category set up and you just use the User namespace (like "User:NotSoAwesomeSteve"), then include the following line in your LocalSettings.php to configure actions to be assigned to any page in the User namespace. Note that this configuration will which file is imported for the action form, so you'll need to ensure you import pages after setting this configuration, as described above.
 
 ```
 $egSemanticActionsAssigneeValuesFrom = "User";
