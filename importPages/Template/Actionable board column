@@ -32,12 +32,12 @@ FOR EACH ACTION DO ARRAYMAP ON LABELS OF THAT ACTION
 
 FOR EACH LABEL IF LABEL IS IN COLUMN LABELS, ADD TO VARIABLE ACTIONREPRESENTED
 
--->{{#ifeq:yes|{{#arraysearch:boardLabels|LABEL|0|yes}}|<!-- THEN -->{{#vardefine:actionREPRESENTED|True}}|<!-- ELSE NOTHING --><!--END IF-->}}<!--END ARRAYMAP-->|}}<!--
+-->{{#ifeq:yes|{{#arraysearch:boardLabels|LABEL|0|yes}}|<!-- THEN -->{{#vardefine:actionRepresented|True}}|<!-- ELSE NOTHING --><!--END IF-->}}<!--END ARRAYMAP-->|}}<!--
 
 IF ACTION IS REPRESENTED IN ANOTHER COLUMN, DO NOTHING; ELSE ADD IT TO ACTIONSNOTREPRESENTED
 
--->{{#ifeq:{{#var:actionREPRESENTED}}|True||{{#vardefine:actionsNotRepresented|ACTION, {{#var:actionsNotRepresented}}}}}}<!--
--->{{#vardefine:actionREPRESENTED|}} |}} }}<!--
+-->{{#ifeq:{{#var:actionRepresented}}|True||{{#vardefine:actionsNotRepresented|ACTION, {{#var:actionsNotRepresented}}}}}}<!--
+-->{{#vardefine:actionRepresented|}} |}} }}<!--
 
 SET VARIABLE FOR DEFAULT RELATED ARTICLES FOR NEW ACTIONS
 
