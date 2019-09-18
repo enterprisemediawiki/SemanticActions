@@ -61,7 +61,7 @@ IF THIS IS FOR A COLUMN WITH A LABEL HEADER, QUERY FOR ACTIONS WITH THAT LABEL
 |?Related article
 |format=template
 |template=Actionable board row
-|userparam={{{5|Edit}}}
+|userparam={{{5|View}}}
 |link=none
 |limit=5000
 }}|<!--
