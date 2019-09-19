@@ -1,4 +1,4 @@
-<includeonly><tr><td>{{#ifeq:{{{#userparam}}}|View|<small>{{#formlink: link text=[edit]|query string=|target={{{1|}}}|window|reload|returnto={{FULLPAGENAME}} }}</small> [[{{{1|}}}|{{#show:{{{1|}}}|?Summary}}]]|{{#formlink: link text={{#show:{{{1|}}}|?Summary}}|query string=|target={{{1|}}}|window|reload|returnto={{FULLPAGENAME}} }}}}<!--
+<includeonly><tr><td>{{#ifeq:{{{#userparam}}}|Edit|{{#formlink: link text={{#show:{{{1|}}}|?Summary}}|query string=|target={{{1|}}}|window|reload|returnto={{FULLPAGENAME}} }}|<small>{{#formlink: link text=[edit]|query string=|target={{{1|}}}|window|reload|returnto={{FULLPAGENAME}} }}</small> [[{{{1|}}}|{{#show:{{{1|}}}|?Summary}}]]}}<!--
 
 LABELS
 
