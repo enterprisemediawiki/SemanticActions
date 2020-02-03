@@ -26,7 +26,7 @@ ASSIGNED_TO
 
 LABEL
 
---><tr><td>'''[[:Category:Label|<span style="color: #ffffff;">Labels</span>]]'''</td><td>{{{field|LABEL|input type=tokens|namespace=Label|values from namespace=Label|list}}}</td></tr><!--
+--><tr><td>'''[[:Category:Label|<span style="color: #ffffff;">Labels</span>]]'''</td><td>{{{field|LABEL|input type=tokens|namespace=Label|values from namespace=Label|mapping property=Alias|list}}}</td></tr><!--
 
 RELATED_ARTICLE
 
