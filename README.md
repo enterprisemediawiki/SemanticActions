@@ -173,6 +173,7 @@ If you install [Extension:Header Footer](https://www.mediawiki.org/wiki/Extensio
 __NOTOC__<br style="clear:both;" />
 {{#ask: [[Category:Actionable]] [[Related article::{{PAGENAME}}]]
 |mainlabel=Action
+|?Action ID
 |?Action status=Status
 |?Due date
 |?Assigned to
