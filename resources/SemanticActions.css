@@ -20,7 +20,7 @@ table.actionable_board {
 	border: 1px solid black;
 	border-collapse: collapse;
 	margin-top: 10px;
-	width: 320px;
+	width: 322px;
 }
 .actionable_board th {
 	background-color: #d5d5d5;
