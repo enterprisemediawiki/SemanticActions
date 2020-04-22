@@ -1,0 +1,11 @@
+<includeonly><span class="actionable_button drilldown_action">[[Special:Drilldown/Actionable|Drilldown]]</span></includeonly><noinclude><!--
+
+-->This template adds a button with a link to drilldown actions.
+
+== Example ==
+<pre>{{Drilldown button}}</pre>
+
+{{Drilldown button}}
+
+[[Category:Page required for Actionable Extension]]
+</noinclude>
