@@ -21,59 +21,19 @@ SET VARIABLES AND ARRAYS
 {{#if:{{#arrayprint:Assignees}}| AND ({{#arraymap:{{#arrayprint:Assignees}}|,|VAR| A._value='VAR' | \s OR \s}}) |}}
 )}}<!--
 
-List of action IDs as filtered for entire board
+Only define boardIDsNotInCols for left column creation
 
--->{{#if:{{#arrayprint:Labels}}||{{#arraydefine:boardIDsAll|{{#cargo_query:
+-->{{#if:{{#arrayprint:Labels}}||<!--
+
+List of action IDs not represented in columns
+
+-->{{#arraydefine:boardIDsNotInCols|{{#cargo_query:
 tables=Actionable,Actionable__Assigned_to = A,Actionable__Label = L,Actionable__Related_article = R
 |join on=Actionable._ID=A._rowID, Actionable._ID=L._rowID, Actionable._ID=R._rowID
 |fields=Action_ID
-|where=(Actionable.Action_ID > 0 
-{{#switch: {{#var:statusParameter}} | Open = AND Actionable.Action_status='Open' | Closed = AND Actionable.Action_status='Closed' | }}
-{{#if:{{#arrayprint:RA}}| AND ({{#arraymap:{{#arrayprint:RA}}|,|VAR| R._value='VAR' | \s OR \s}}) |}}
-{{#if:{{#arrayprint:Assignees}}| AND ({{#arraymap:{{#arrayprint:Assignees}}|,|VAR| A._value='VAR' | \s OR \s}}) |}}
-<!-- Don't use labels until board can be filtered on more parameters than Related articles
-{{#if:{{#arrayprint:AllLabels}}| AND ({{#arraymap:{{#arrayprint:AllLabels}}|,|VAR| L._value='{{#replace:VAR|Label:|}}' | \s OR \s}}) |}}
--->
-)
-|group by=Actionable._ID
-|having=COUNT(*)>={{#expr: 
-{{#ifeq:{{#arraysize:RA}}|0|1|{{#arraysize:RA}} }}<!-- * 
-{{#ifeq:{{#arraysize:AllLabels}}|0|1|{{#arraysize:AllLabels}} }} * 
-{{#ifeq:{{#arraysize:Assignees}}|0|1|{{#arraysize:Assignees}} }} -->
-}}
-|order by=Due_date
-|limit=500<!--{{#var:resultsLimit}}-->
-|offset=
-|intro=
-|outro=
-|default=
-|more results text=
-|max display chars=
-|format=list
-|delimiter=;
-|no html
-}}|;|unique}}<!--
-
-List of action IDs represented in columns (further filtered per column); perform cargo query for each col and append array together
-
--->{{#arraydefine:boardIDsInCols|}}<!--
--->{{#arraymap:{{#arrayprint:AllLabels|,}}|,|LABELVAR|{{#arraydefine:boardIDsInCols|{{#arrayprint:boardIDsInCols|;}};<!--
--->{{#cargo_query:
-tables=Actionable,Actionable__Assigned_to = A,Actionable__Label = L,Actionable__Related_article = R
-|join on=Actionable._ID=A._rowID, Actionable._ID=L._rowID, Actionable._ID=R._rowID
-|fields=Action_ID
-|where=(Actionable.Action_ID > 0 
-{{#switch: {{#var:statusParameter}} | Open = AND Actionable.Action_status='Open' | Closed = AND Actionable.Action_status='Closed' | }}
-{{#if:{{#arrayprint:RA}}| AND ({{#arraymap:{{#arrayprint:RA}}|,|VAR| R._value='VAR' | \s OR \s}}) |}}
-{{#if:LABELVAR| AND L._value='{{#replace:LABELVAR|Label:|}}' |}}
-{{#if:{{#arrayprint:Assignees}}| AND ({{#arraymap:{{#arrayprint:Assignees}}|,|VAR| A._value='VAR' | \s OR \s}}) |}}
-)
-|group by=Actionable._ID
-|having=COUNT(*)>={{#expr: 
-{{#ifeq:{{#arraysize:RA}}|0|1|{{#arraysize:RA}} }} * 
-<!-- {{#ifeq:{{#arraysize:AllLabels}}|0|1|{{#arraysize:AllLabels}} }} * -->
-{{#ifeq:{{#arraysize:Assignees}}|0|1|{{#arraysize:Assignees}} }}
-}}
+|where={{#var:queryWHERE}}
+|group by=Action_ID
+|having=COUNT(*)>={{#var:queryTermsProduct}} AND SUM(CASE WHEN L._value IN ({{#arraymap:{{#arrayprint:AllLabels|,}}|,|VAR|'{{#replace:VAR|Label:|}}'|,}}) THEN 1 ELSE 0 END)=0
 |order by=Due_date
 |limit={{#var:resultsLimit}}
 |offset=
@@ -85,12 +45,7 @@ tables=Actionable,Actionable__Assigned_to = A,Actionable__Label = L,Actionable__
 |format=list
 |delimiter=;
 |no html
-}}<!--
--->|;|unique}}|;}}<!--
-
-List of action IDs not represented in columns
-
--->{{#arraydiff:boardIDsNotInCols|boardIDsAll|boardIDsInCols}}<!-- END IF TO ONLY DO THIS FOR LEFT COLUMN -->|}}<!--
+}}|;|unique}}<!-- END IF TO ONLY DO THIS FOR LEFT COLUMN -->|}}<!--
 
 BUILD TABLE
 
@@ -150,12 +105,13 @@ tables=Actionable,Actionable__Assigned_to = A,Actionable__Label = L,Actionable__
 
 ACTIONS IN COLUMN WITHOUT ANY OF THE HEADER LABELS
 
--->{{#arraymap:{{#arrayprint:boardIDsNotInCols|;}}|;|VAR|{{#cargo_query:
-tables=Actionable
-|fields=_pageName,Action_ID,Due_date,Assigned_to,Label,Related_article,Assigned_to__full,Label__full,Related_article__full
-|where=(Action_ID=VAR)
-|group by=
-|having=
+-->{{#cargo_query:
+tables=Actionable,Actionable__Assigned_to = A,Actionable__Label = L,Actionable__Related_article = R
+|join on=Actionable._ID=A._rowID, Actionable._ID=L._rowID, Actionable._ID=R._rowID
+|fields=Actionable._pageName,Action_ID,Due_date,Assigned_to__full=Assigned_to,Label__full=Label,Related_article__full=Related_article
+|where={{#var:queryWHERE}}
+|group by=Action_ID
+|having=COUNT(*)>={{#var:queryTermsProduct}} AND SUM(CASE WHEN L._value IN ({{#arraymap:{{#arrayprint:AllLabels|,}}|,|VAR|'{{#replace:VAR|Label:|}}'|,}}) THEN 1 ELSE 0 END)=0
 |order by=Due_date
 |limit={{#var:resultsLimit}}
 |offset=
@@ -167,13 +123,10 @@ tables=Actionable
 |format=template
 |template=Actionable board row
 }}
-|}}
 |}}<!--
 --></table></td><!--
 
-UNSET VARIABLES
 
--->{{#vardefine:newActionDefaultRelatedArticles|}}<!--
 --></includeonly><noinclude>This template creates a kanban board column.
 
 <nowiki>{{{1}}}</nowiki> = Open, Closed, or All (only show actions with this Action status)<br />
