@@ -1,87 +1,163 @@
 <includeonly><!--
 
-DEFINE QUERY PARAMETERS USED IN MULTIPLE PLACES
+SET VARIABLES AND ARRAYS
 
--->{{#vardefine:commonQueryPart|[[Category:Actionable]] <!--
-  -->{{#switch:{{{1|}}} | Open = [[Action status::Open]] | Closed = [[Action status::Closed]] | }}<!--
-  -->{{#if:{{{2|}}}|{{#arraymap:{{{2|}}}|,|VAR|[[Related article::VAR]]|}} |}}<!--
-  -->{{#if:{{{7|}}}|{{#arraymap:{{{7|}}}|,|VAR|[[Assigned to::VAR]]|}} |}} }}<!--
+-->{{#vardefine:resultsLimit|100}}<!--Limit results to this amount
+-->{{#vardefine:statusParameter|{{{1|}}}}}<!--Open, Closed filter
+-->{{#arraydefine:RA|{{{2|}}}|,|}}<!--Related articles filter
+-->{{#arraydefine:Labels|{{{3|}}}|,|}}<!--Labels filter
+-->{{#arraydefine:AllLabels|{{{4|}}}|,|}}<!--All Labels filter
+-->{{#arraydefine:Assignees|{{{7|}}}|,|}}<!--Assignees filter
+-->{{#vardefine:newActionDefaultRelatedArticles|{{{6|}}}}}<!--Default Related articles for new action
+-->{{#vardefine:queryTermsProduct|{{#expr: 
+{{#ifeq:{{#arraysize:RA}}|0|1|{{#arraysize:RA}} }} * 
+{{#ifeq:{{#arraysize:Labels}}|0|1|{{#arraysize:Labels}} }} * 
+{{#ifeq:{{#arraysize:Assignees}}|0|1|{{#arraysize:Assignees}} }}
+}} }}<!--Use in query to filter results that meet all criteria
+-->{{#vardefine:queryWHERE|(Actionable.Action_ID > 0 
+{{#switch: {{#var:statusParameter}} | Open = AND Actionable.Action_status='Open' | Closed = AND Actionable.Action_status='Closed' | }}
+{{#if:{{#arrayprint:RA}}| AND ({{#arraymap:{{#arrayprint:RA}}|,|VAR| R._value='VAR' | \s OR \s}}) |}}
+{{#if:{{#arrayprint:Labels}}| AND ({{#arraymap:{{#arrayprint:Labels}}|,|VAR| L._value='{{#replace:VAR|Label:|}}' | \s OR \s}}) |}}
+{{#if:{{#arrayprint:Assignees}}| AND ({{#arraymap:{{#arrayprint:Assignees}}|,|VAR| A._value='VAR' | \s OR \s}}) |}}
+)}}<!--
 
-ONLY SET THE REST FOR THE FIRST COLUMN
+List of action IDs as filtered for entire board
 
--->{{#if:{{{3|}}}||<!--
+-->{{#if:{{#arrayprint:Labels}}||{{#arraydefine:boardIDsAll|{{#cargo_query:
+tables=Actionable,Actionable__Assigned_to = A,Actionable__Label = L,Actionable__Related_article = R
+|join on=Actionable._ID=A._rowID, Actionable._ID=L._rowID, Actionable._ID=R._rowID
+|fields=Action_ID
+|where=(Actionable.Action_ID > 0 
+{{#switch: {{#var:statusParameter}} | Open = AND Actionable.Action_status='Open' | Closed = AND Actionable.Action_status='Closed' | }}
+{{#if:{{#arrayprint:RA}}| AND ({{#arraymap:{{#arrayprint:RA}}|,|VAR| R._value='VAR' | \s OR \s}}) |}}
+{{#if:{{#arrayprint:Assignees}}| AND ({{#arraymap:{{#arrayprint:Assignees}}|,|VAR| A._value='VAR' | \s OR \s}}) |}}
+<!-- Don't use labels until board can be filtered on more parameters than Related articles
+{{#if:{{#arrayprint:AllLabels}}| AND ({{#arraymap:{{#arrayprint:AllLabels}}|,|VAR| L._value='{{#replace:VAR|Label:|}}' | \s OR \s}}) |}}
+-->
+)
+|group by=Actionable._ID
+|having=COUNT(*)>={{#expr: 
+{{#ifeq:{{#arraysize:RA}}|0|1|{{#arraysize:RA}} }}<!-- * 
+{{#ifeq:{{#arraysize:AllLabels}}|0|1|{{#arraysize:AllLabels}} }} * 
+{{#ifeq:{{#arraysize:Assignees}}|0|1|{{#arraysize:Assignees}} }} -->
+}}
+|order by=Due_date
+|limit=500<!--{{#var:resultsLimit}}-->
+|offset=
+|intro=
+|outro=
+|default=
+|more results text=
+|max display chars=
+|format=list
+|delimiter=;
+|no html
+}}|;|unique}}<!--
 
-SET VARIABLE FOR LIST OF ACTIONS FOR THIS TABLE THAT DO NOT HAVE LABELS SELECTED FOR COLUMNS
-for each action (query actions open/closed/all related articles)
-show action labels
-for each label
-check if label is found in array of labels used for this board
-if not found, add to array of actions to list in this column
--->{{#arraydefine:boardLabels|{{{4|}}}}}<!--
---><!--
--->{{#vardefine:actions|{{#ask: {{#var:commonQueryPart}} |format=plainlist |link=none |limit=5000 }}}}<!--
--->{{#vardefine:actionRepresented|}}<!--
--->{{#vardefine:actionsNotRepresented|}}<!--
+List of action IDs represented in columns (further filtered per column); perform cargo query for each col and append array together
 
-BEGIN ARRAYMAP ON EACH ACTION
+-->{{#arraydefine:boardIDsInCols|}}<!--
+-->{{#arraymap:{{#arrayprint:AllLabels|,}}|,|LABELVAR|{{#arraydefine:boardIDsInCols|{{#arrayprint:boardIDsInCols|;}};<!--
+-->{{#cargo_query:
+tables=Actionable,Actionable__Assigned_to = A,Actionable__Label = L,Actionable__Related_article = R
+|join on=Actionable._ID=A._rowID, Actionable._ID=L._rowID, Actionable._ID=R._rowID
+|fields=Action_ID
+|where=(Actionable.Action_ID > 0 
+{{#switch: {{#var:statusParameter}} | Open = AND Actionable.Action_status='Open' | Closed = AND Actionable.Action_status='Closed' | }}
+{{#if:{{#arrayprint:RA}}| AND ({{#arraymap:{{#arrayprint:RA}}|,|VAR| R._value='VAR' | \s OR \s}}) |}}
+{{#if:LABELVAR| AND L._value='{{#replace:LABELVAR|Label:|}}' |}}
+{{#if:{{#arrayprint:Assignees}}| AND ({{#arraymap:{{#arrayprint:Assignees}}|,|VAR| A._value='VAR' | \s OR \s}}) |}}
+)
+|group by=Actionable._ID
+|having=COUNT(*)>={{#expr: 
+{{#ifeq:{{#arraysize:RA}}|0|1|{{#arraysize:RA}} }} * 
+<!-- {{#ifeq:{{#arraysize:AllLabels}}|0|1|{{#arraysize:AllLabels}} }} * -->
+{{#ifeq:{{#arraysize:Assignees}}|0|1|{{#arraysize:Assignees}} }}
+}}
+|order by=Due_date
+|limit={{#var:resultsLimit}}
+|offset=
+|intro=
+|outro=
+|default=
+|more results text=
+|max display chars=
+|format=list
+|delimiter=;
+|no html
+}}<!--
+-->|;|unique}}|;}}<!--
 
--->{{#arraymap:{{#var:actions}}|,|ACTION|<!--
+List of action IDs not represented in columns
 
-FOR EACH ACTION DO ARRAYMAP ON LABELS OF THAT ACTION
-
--->{{#arraymap:{{#show:ACTION|?Label|format=plainlist|link=none}}|,|LABEL|<!--
-
-FOR EACH LABEL IF LABEL IS IN COLUMN LABELS, ADD TO VARIABLE ACTIONREPRESENTED
-
--->{{#ifeq:yes|{{#arraysearch:boardLabels|LABEL|0|yes}}|<!-- THEN -->{{#vardefine:actionRepresented|True}}|<!-- ELSE NOTHING --><!--END IF-->}}<!--END ARRAYMAP-->|}}<!--
-
-IF ACTION IS REPRESENTED IN ANOTHER COLUMN, DO NOTHING; ELSE ADD IT TO ACTIONSNOTREPRESENTED
-
--->{{#ifeq:{{#var:actionRepresented}}|True||{{#vardefine:actionsNotRepresented|ACTION, {{#var:actionsNotRepresented}}}}}}<!--
--->{{#vardefine:actionRepresented|}} |}} }}<!--
-
-SET VARIABLE FOR DEFAULT RELATED ARTICLES FOR NEW ACTIONS
-
--->{{#vardefine:newActionDefaultRelatedArticles|{{{6|}}}}}<!--
+-->{{#arraydiff:boardIDsNotInCols|boardIDsAll|boardIDsInCols}}<!-- END IF TO ONLY DO THIS FOR LEFT COLUMN -->|}}<!--
 
 BUILD TABLE
 
 --><td style="background-color:#f5f5f5;"><!--
 
---><table class="actionable_board actionable_board_action">
-<tr><th>{{#if:{{{3|}}}|{{Actionable board column label button|{{{3|}}}|{{#var:newActionDefaultRelatedArticles}}}}|None of these labels}}</th></tr>
-{{#if:{{{3|}}}|<!--
+--><table class="actionable_board">
+<tr style="height:36px;"><th>{{#if:{{#arrayprint:Labels}}|{{Actionable board column label button|{{#arrayprint:Labels}}|{{#var:newActionDefaultRelatedArticles}}}}|None of these labels}}<span style="float:right;">{{#if:{{#arrayprint:Labels}}|<!--
 
-IF THIS IS FOR A COLUMN WITH A LABEL HEADER, QUERY FOR ACTIONS WITH THAT LABEL
+NUMBER OF ACTIONS IN COLUMN WITH A LABEL HEADER
 
--->{{#ask: {{#var:commonQueryPart}} [[Label::{{{3}}}]]
-|?Action ID
-|?Due date
-|?Assigned to
-|?Label
-|?Related article
+-->{{#arraydefine:results|{{#cargo_query:
+tables=Actionable,Actionable__Assigned_to = A,Actionable__Label = L,Actionable__Related_article = R
+|join on=Actionable._ID=A._rowID, Actionable._ID=L._rowID, Actionable._ID=R._rowID
+|fields=Action_ID
+|where={{#var:queryWHERE}}
+|group by=Actionable._ID
+|having=COUNT(*)>={{#var:queryTermsProduct}}
+|order by=Due_date
+|limit={{#var:resultsLimit}}
+|offset=
+|intro=
+|outro=
+|default=
+|more results text=
+|max display chars=
+|format=list
+|delimiter=;
+|no html
+}}|;|}}{{#arraysize:results}}{{#ifeq:{{#arraysize:results}}|{{#var:resultsLimit}}|+|}}|<!--
+
+NUMBER OF ACTIONS IN COLUMN WITHOUT ANY OF THE HEADER LABELS
+
+-->{{#arraysize:boardIDsNotInCols}}|}}</span></th></tr>
+</table><table class="actionable_board actionable_board_action">
+{{#if:{{#arrayprint:Labels}}|<!--
+
+ACTIONS IN COLUMN WITH A LABEL HEADER
+
+-->{{#cargo_query:
+tables=Actionable,Actionable__Assigned_to = A,Actionable__Label = L,Actionable__Related_article = R
+|join on=Actionable._ID=A._rowID, Actionable._ID=L._rowID, Actionable._ID=R._rowID
+|fields=Actionable._pageName,Action_ID,Due_date,Assigned_to__full=Assigned_to,Label__full=Label,Related_article__full=Related_article
+|where={{#var:queryWHERE}}
+|group by=Actionable._ID
+|having=COUNT(*)>={{#var:queryTermsProduct}}
+|order by=Due_date
+|limit={{#var:resultsLimit}}
+|offset=
+|intro=
+|outro=
+|default=
+|more results text=
+|max display chars=
 |format=template
 |template=Actionable board row
-|userparam={{{5|Edit}}}
-|link=none
-|limit=5000
 }}|<!--
 
-ELSE QUERY FOR ACTIONS WITHOUT ANY OF THE HEADER LABELS, ONLY IF THERE ARE ANY SUCH ACTIONS
+ACTIONS IN COLUMN WITHOUT ANY OF THE HEADER LABELS
 
--->{{#if: {{#var:actionsNotRepresented}}|
-{{#cargo_query:
+-->{{#arraymap:{{#arrayprint:boardIDsNotInCols|;}}|;|VAR|{{#cargo_query:
 tables=Actionable
-|fields=_pageName,Action_ID,Due_date,Assigned_to__full,Label__full,Related_article__full
-|where=(Action_ID > 0 
-{{#switch:{{{1|}}} | Open = AND Action_status='Open' | Closed = AND Action_status='Closed' | }}
-{{#if:{{{2|}}}|{{#arraymap:{{{2|}}}|,|VAR| AND Related_article__full RLIKE ".*(^{{!}},\s*)'VAR'(${{!}}\s*,).*" | }} |}}
-{{#if:{{{4|}}}|{{#arraymap:{{{4|}}}|,|VAR| AND Label__full NOT RLIKE ".*(^{{!}},\s*){{#replace:VAR|Label:|}}(${{!}}\s*,).*" | \s\s}} |}}
-)
+|fields=_pageName,Action_ID,Due_date,Assigned_to,Label,Related_article,Assigned_to__full,Label__full,Related_article__full
+|where=(Action_ID=VAR)
 |group by=
 |having=
-|order by=
-|limit=5000
+|order by=Due_date
+|limit={{#var:resultsLimit}}
 |offset=
 |intro=
 |outro=
@@ -91,16 +167,13 @@ tables=Actionable
 |format=template
 |template=Actionable board row
 }}
-
-|}}|}}<!--
+|}}
+|}}<!--
 --></table></td><!--
 
 UNSET VARIABLES
 
--->{{#vardefine:commonQueryPart|}}<!--
--->{{#vardefine:actions|}}<!--
--->{{#vardefine:actionRepresented|}}<!--
--->{{#vardefine:actionsNotRepresented|}}<!--
+-->{{#vardefine:newActionDefaultRelatedArticles|}}<!--
 --></includeonly><noinclude>This template creates a kanban board column.
 
 <nowiki>{{{1}}}</nowiki> = Open, Closed, or All (only show actions with this Action status)<br />
