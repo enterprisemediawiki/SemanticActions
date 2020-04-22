@@ -1,1 +1,15 @@
-<includeonly>{{#vardefine:color|{{#if:{{#show:{{{1|}}}|?Color}}|{{#show:{{{1|}}}|?Color}}|Gray}}}}<span class="actionable_button label_button_{{#var:color}}">{{#formredlink:form=Label|link text={{#explode:{{{1|}}}|Label:|1}}|existing page link text={{#show:Label:{{{1|}}}|?Alias}}|link type=text|query string=Label[ALIAS]={{#explode:{{{1|}}}|Label:|1}}|target={{#if:{{#explode:{{{1|}}}|Label:|1}}|{{{1|}}}|Label:{{{1|}}}}}|tooltip=Create a page for this label to customize its color|new window}}</span>{{#vardefine:color|}}</includeonly><noinclude>[[Category:Page required for Actionable Extension]]</noinclude>
+<includeonly><!--
+
+If label name is passed without "Label:" prefix, add it.
+
+-->{{#ifeq:{{#explode:{{{1|}}}|:|0}}|Label|{{#vardefine:labelPageName|{{{1|}}}}}{{#vardefine:labelName|{{#explode:{{{1|}}}|Label:|1}}}}|{{#vardefine:labelPageName|Label:{{{1|}}}}}{{#vardefine:labelName|{{{1|}}}}}}}<!--
+
+Label color per query (which may not return a value if not set)
+
+-->{{#vardefine:labelColorQueried|{{#show:{{#var:labelPageName}}|?Color}}}}<!--
+
+-->{{#vardefine:color|{{#if:{{#var:labelColorQueried}}|{{#var:labelColorQueried}}|Gray}}}}<span class="actionable_button label_button_{{#var:color}}">{{#formredlink:form=Label|link text={{#var:labelName}}|existing page link text={{#var:labelPageName}}|link type=text|query string=Label[ALIAS]={{#var:labelName}}|target={{#var:labelPageName}}|tooltip=Create a page for this label to customize its color|new window}}</span><!--
+
+Clear variables
+
+-->{{#vardefine:labelPageName|}}{{#vardefine:labelName|}}{{#vardefine:color|}}{{#vardefine:labelColorQueried|}}</includeonly><noinclude>[[Category:Page required for Actionable Extension]]</noinclude>
