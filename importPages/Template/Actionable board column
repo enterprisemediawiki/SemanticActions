@@ -4,7 +4,8 @@ DEFINE QUERY PARAMETERS USED IN MULTIPLE PLACES
 
 -->{{#vardefine:commonQueryPart|[[Category:Actionable]] <!--
   -->{{#switch:{{{1|}}} | Open = [[Action status::Open]] | Closed = [[Action status::Closed]] | }}<!--
-  -->{{#if:{{{2|}}}|{{#arraymap:{{{2|}}}|,|VAR|[[Related article::VAR]]|}} |}} }}<!--
+  -->{{#if:{{{2|}}}|{{#arraymap:{{{2|}}}|,|VAR|[[Related article::VAR]]|}} |}}<!--
+  -->{{#if:{{{7|}}}|{{#arraymap:{{{7|}}}|,|VAR|[[Assigned to::VAR]]|}} |}} }}<!--
 
 ONLY SET THE REST FOR THE FIRST COLUMN
 
@@ -47,8 +48,24 @@ BUILD TABLE
 
 --><td style="background-color:#f5f5f5;"><!--
 
+--><table class="actionable_board"><!--
+
+COLUMN HEADER
+
+--><tr style="height:36px;"><th>{{#if:{{{3|}}}|{{Actionable board column label button|{{{3|}}}|{{#var:newActionDefaultRelatedArticles}}}}|None of these labels}}<span style="float:right;">{{#if:{{{3|}}}|<!--
+
+IF THIS IS FOR A COLUMN WITH A LABEL HEADER, QUERY FOR ACTIONS WITH THAT LABEL
+
+-->{{#ask: {{#var:commonQueryPart}} [[Label::{{{3}}}]]|format=count|limit=5000}}|<!--
+
+ELSE QUERY FOR ACTIONS WITHOUT ANY OF THE HEADER LABELS, ONLY IF THERE ARE ANY SUCH ACTIONS
+
+-->{{#if: {{#var:actionsNotRepresented}}|{{#ask: {{#arraymap:{{#var:actionsNotRepresented}}|,|VAR|{{#var:commonQueryPart}} [[VAR]]| OR }} |format=count|limit=5000}}|}}|}}</span></th></tr>
+</table><!--
+
+COLUMN ROWS
+
 --><table class="actionable_board actionable_board_action">
-<tr><th>{{#if:{{{3|}}}|{{Actionable board column label button|{{{3|}}}|{{#var:newActionDefaultRelatedArticles}}}}|None of these labels}}</th></tr>
 {{#if:{{{3|}}}|<!--
 
 IF THIS IS FOR A COLUMN WITH A LABEL HEADER, QUERY FOR ACTIONS WITH THAT LABEL
@@ -96,5 +113,6 @@ UNSET VARIABLES
 <nowiki>{{{4}}}</nowiki> = List of "Does not have label" values to use for this column (only show actions in this column with none of these Labels)<br />
 <nowiki>{{{5}}}</nowiki> = View or Edit (do you want action links to go to the view or edit mode?)<br />
 <nowiki>{{{6}}}</nowiki> = List of default Related articles for new actions created from links in this table<br />
+<nowiki>{{{7}}}</nowiki> = List of Assignees (only show actions with all of these Assignees)<br />
 
 [[Category:Page required for Actionable Extension]]</noinclude>
