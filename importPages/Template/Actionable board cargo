@@ -18,7 +18,7 @@ BUILD TABLE
 
 IF USER WANTS COLUMN FOR ACTIONS WITHOUT LABELS IN THIS BOARD
 
--->{{Actionable board column|{{{1|}}}|{{{2|}}}||{{#arraymap:{{{3|}}}|,|VAR|Label:VAR|,}}|{{{5|}}}|{{{6|}}}|{{{7|}}}}} |}}<!--
+-->{{Actionable board column cargo|{{{1|}}}|{{{2|}}}||{{#arraymap:{{{3|}}}|,|VAR|Label:VAR|,}}|{{{5|}}}|{{{6|}}}|{{{7|}}}}} |}}<!--
 
 ADD COLUMNS FOR EACH LABEL
 
