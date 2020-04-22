@@ -70,6 +70,11 @@ span.actionable_button.search_action a {
 	font-size: 16px;
 	background: none !important;
 }
+span.actionable_button.drilldown_action a {
+	padding: 0px 20px;
+	font-size: 16px;
+	background: none !important;
+}
 .actionable_button.add_action {
 	background-color: #1a7d30; /* Green */
 	border: 2px solid #ffffff; /* White*/
@@ -82,10 +87,19 @@ span.actionable_button.search_action a {
 	margin: -1px;
 	padding: 0px;
 }
+.actionable_button.drilldown_action {
+	background-color: #7400ff; /* Purple*/
+	border: 2px solid #ffffff; /* White*/
+	margin: -1px;
+	padding: 0px;
+}
 .actionable_button.add_action:hover {
 	border: 2px solid #666666; /* Gray*/
 }
 .actionable_button.search_action:hover {
+	border: 2px solid #666666; /* Gray*/
+}
+.actionable_button.drilldown_action:hover {
 	border: 2px solid #666666; /* Gray*/
 }
 .actionable_button.related_article {
@@ -99,7 +113,13 @@ span.actionable_button.search_action a {
 	color: white;
 }
 .actionable_button, .search_action a.external, .search_action a.external:visited {
-	color: white !important;
+	color: white;
+}
+.actionable_button, .drilldown_action a:visited {
+	color: white;
+}
+.actionable_button, .drilldown_action a.external a.external:visited {
+	color: white;
 }
 .actionable_button .new a:link {
 	color: #e60000; /* bright red */
