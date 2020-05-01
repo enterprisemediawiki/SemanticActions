@@ -83,11 +83,17 @@ END TABLE FOR META DATA
 
 RESOLUTION
 
--->{{#if:{{{RESOLUTION|}}}|'''Resolution:''' {{{RESOLUTION|}}}<br />|}}<!--
+-->{{#if:{{{RESOLUTION|}}}|'''Resolution:'''
+
+{{{RESOLUTION|}}}<br />|}}<!--
 
 DETAILS
 
--->{{#if:{{{DETAILS|}}}|'''Details:'''<br />{{{DETAILS|}}}}}<!--
+-->{{#if:{{{DETAILS|}}}|<div style="clear:both;"></div>
+
+'''Details:'''
+
+{{{DETAILS|}}}|}}<!--
 
 APPLY CATEGORY
 
