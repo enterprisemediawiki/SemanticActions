@@ -43,7 +43,7 @@ SET SEMANTIC PROPERTIES
 |Assigned to={{{ASSIGNED_TO|}}}|+sep=,
 |Action status={{{ACTION_STATUS|Open}}}
 |Due date={{{DUE_DATE|}}}
-|Due date sort={{{DUE_DATE|January 01 1900}}}
+|Due date sort={{{DUE_DATE|January 01 3000}}}
 |Related article={{{RELATED_ARTICLE|}}}|+sep=,
 |Label={{{LABEL|}}}|+sep=,
 |Resolution={{{RESOLUTION|}}}
