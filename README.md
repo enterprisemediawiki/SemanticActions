@@ -120,7 +120,7 @@ To create an action board, use the template as shown below.
 ### Traditional semantic queries
 If you prefer another format, you may still use all the various results formats provided by [Semantic MediaWiki](https://www.semantic-mediawiki.org/wiki/Help:Result_formats) and [Extension:Semantic Result Formats](https://www.semantic-mediawiki.org/wiki/Extension:Semantic_Result_Formats).
 
-For example, you can use the standard table format as shown in the example below.
+For example, you can use the standard table format as shown in the example below. Note the use of Property:Due date sort. This property is set with the same value as Property:Due date, if that value exists. Otherwise it is set with a value in the year 3000, so the action will show up in the bottom of the ascending order list. This is a workaround to a limition of Semantic MediaWiki on sorting results with missing values.
 
 ```
 {{#ask: [[Category:Actionable]] [[Related article::Pump module]]
@@ -131,8 +131,8 @@ For example, you can use the standard table format as shown in the example below
 |?Related article
 |format=table
 |limit=50
-|sort=Action status
-|order=DESC
+|sort=Due date sort
+|order=ASC
 }}
 ```
 
