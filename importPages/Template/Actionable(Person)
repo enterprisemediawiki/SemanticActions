@@ -11,6 +11,7 @@ BEGIN DETECT AND SET ABSENCE OF DEFINED LABELS
 -->{{#arraymap:{{#ask: [[Category:Label]]
 |link=none
 |format=plainlist
+|limit=5000
 }}|,|LABEL|<!--
 
 FOR EACH DEFINED LABEL DO THIS
