@@ -16,11 +16,11 @@ BUILD TABLE
 
 IF USER WANTS COLUMN FOR ACTIONS WITHOUT LABELS IN THIS BOARD
 
--->{{Actionable board column|{{{1|}}}|{{{2|}}}||{{#arraymap:{{{3|}}}|,|VAR|Label:VAR|,}}|{{{5|}}}|{{{6|}}}}} |}}<!--
+-->{{Actionable board column|{{{1|}}}|{{{2|}}}||{{#arraymap:{{{3|}}}|,|VAR|Label:VAR|,}}|{{{5|}}}|{{{6|}}}|{{{7|}}}}} |}}<!--
 
 ADD COLUMNS FOR EACH LABEL
 
--->{{#arraymap:{{{3}}}|,|VAR|{{Actionable board column|{{{1|}}}|{{{2|}}}|Label:VAR||{{{5|}}} |{{{6|}}}}}| }}<!--
+-->{{#arraymap:{{{3}}}|,|VAR|{{Actionable board column|{{{1|}}}|{{{2|}}}|VAR||{{{5|}}} |{{{6|}}}|{{{7|}}}}}| }}<!--
 
 --></tr>
 </table></includeonly><noinclude>This template creates a kanban board.
@@ -31,5 +31,6 @@ ADD COLUMNS FOR EACH LABEL
 <nowiki>{{{4}}}</nowiki> = True or False (do you want a column on the left that shows actions that do not have any of the labels specified for this board?)<br />
 <nowiki>{{{5}}}</nowiki> = View or Edit (do you want action links to go to the view or edit mode?)<br />
 <nowiki>{{{6}}}</nowiki> = List of default Related articles for new actions created from links in this table<br />
+<nowiki>{{{7}}}</nowiki> = List of Assignees (only show actions with all of these Assignees)<br />
 
 [[Category:Page required for Actionable Extension]]</noinclude>
