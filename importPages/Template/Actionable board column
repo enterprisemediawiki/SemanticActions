@@ -52,11 +52,11 @@ BUILD TABLE
 
 COLUMN HEADER
 
---><tr style="height:36px;"><th>{{#if:{{{3|}}}|{{Actionable board column label button|{{{3|}}}|{{#var:newActionDefaultRelatedArticles}}}}|None of these labels}}<span style="float:right;">{{#if:{{{3|}}}|<!--
+--><tr style="height:36px;"><th>{{#if:{{{3|}}}|{{#arraymap:{{{3|}}}|AND|VAR|{{Actionable board column label button|VAR|{{#var:newActionDefaultRelatedArticles}}}}||}}|None of these labels}}<span style="float:right;">{{#if:{{{3|}}}|<!--
 
 IF THIS IS FOR A COLUMN WITH A LABEL HEADER, QUERY FOR ACTIONS WITH THAT LABEL
 
--->{{#ask: {{#var:commonQueryPart}} [[Label::{{{3}}}]]|format=count|limit=5000}}|<!--
+-->{{#ask: {{#var:commonQueryPart}} {{#arraymap:{{{3|}}}|AND|VAR|[[Label::VAR]]||}}|format=count|limit=5000}}|<!--
 
 ELSE QUERY FOR ACTIONS WITHOUT ANY OF THE HEADER LABELS, ONLY IF THERE ARE ANY SUCH ACTIONS
 
@@ -70,7 +70,7 @@ COLUMN ROWS
 
 IF THIS IS FOR A COLUMN WITH A LABEL HEADER, QUERY FOR ACTIONS WITH THAT LABEL
 
--->{{#ask: {{#var:commonQueryPart}} [[Label::{{{3}}}]]
+-->{{#ask: {{#var:commonQueryPart}} {{#arraymap:{{{3}}}| AND |VAR|[[Label::VAR]]| | }}
 |?Action ID
 |?Due date
 |?Assigned to
